@@ -1,0 +1,454 @@
+@font-face {
+    font-family: fontOne;
+    src: url(./fonts/NeueHaasDisplayLight.ttf);
+}
+@font-face {
+    font-family: fontTwo;
+    src: url(./fonts/NeueHaasDisplayMediu.ttf);
+}
+@font-face {
+    font-family: fontThree;
+    src: url(./fonts/NeueHaasDisplayRoman.ttf);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    background-color: #3A4A61;
+    overflow: hidden;
+}
+#nav{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    padding: 0 40px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.539);
+}
+#nav h1{
+    font-family: fontThree;
+}
+#nav-part2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+}
+#nav-part2 a{
+    font-size: 20px;
+    font-family: fontThree;
+    text-decoration: none;
+}
+
+.btn{
+    padding: 10px 15px;
+    color: #030f0f;
+    border: none;
+    font-size: 20px;
+    border-radius: 50px;
+    background-color: transparent;
+    font-family: fontThree;
+    font-weight: 500;
+    background-color: #00df82;
+    text-decoration: none;
+}
+
+/* this is page1 content */
+#page1{
+    padding: 0 40px;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#left{
+    height: 100%;
+    width: 55%;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#left h1{
+    font-size: 4vw;
+    font-family: fontTwo;
+    line-height: 0.9;
+    overflow: hidden;
+}
+#name{
+    color: #FF764B;
+}
+h1 span{
+    color: rgba(0, 0, 0, 0.559);
+    display: inline-block;
+}
+#left p{
+    font-size: 25px;
+    font-family: fontOne;
+    line-height: 1;
+    align-items: right;
+    padding: 20px 10px;
+    margin-top: 20px;
+}
+#left a{
+    margin-top: 20px;
+}
+#right{
+    height: 100%;
+    width: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#right img{
+    height: 90%;
+    width: 80%;
+    filter: brightness(0.3);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+#overlay{
+    height: 90%;
+    width: 80%;
+    background-color: transparent;
+    position: absolute;
+    border-radius: 20px;
+    z-index: 12;
+}
+
+/* this is skill content */
+#page2 {
+    margin-top: 30px;
+    padding: 50px;
+    text-align: center;
+    background-color: #2c3e50;
+}
+
+#page2 h2 {
+    font-size: 2.5em;
+    font-family: fontTwo;
+    color: #00df82;
+    margin-bottom: 20px;
+}
+
+#skills {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.skill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #3A4A61;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+.skill img {
+    width: 40px;
+    height: 40px;
+}
+
+.skill span {
+    font-size: 1.2em;
+    font-family: fontThree;
+}
+
+/* projects related page */
+#page3{
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    font-family: FontThree;
+    margin: auto;
+    padding: 50px 20px;
+}
+#nav3 h1{
+    font-size: 40px;
+    color: #00df82;
+    font-weight: 700;
+    font-family: fontTwo;
+}
+
+#nav3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#nav3 h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#nav3 button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+#nav3 button:hover {
+    background-color: #0056b3;
+}
+
+#projectCon {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.projectShow {
+    display: flex;
+    background-color: #2c3e50;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.projectShow:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.proImage {
+    width: 40%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.proDetails {
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.proHeading {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.proDesc {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.proA {
+    text-decoration: none;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: 0.3s;
+    width: max-content;
+}
+
+.proA:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projectShow {
+        flex-direction: column;
+    }
+
+    .proImage {
+        width: 100%;
+        height: 180px;
+    }
+
+    .proDetails {
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .proA {
+        width: 100%;
+        display: block;
+    }
+}
+
+
+/*this is about page*/
+#about{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #2c3e50;
+    height: 100vh;
+    width: 100%;
+    font-family: fontThree;
+}
+#about img{
+    height: 350px;
+    width: 400px;
+    border-radius: 10px;
+}
+#aboutCon{
+    width: 50%;
+}
+#aboutCon h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+#aboutCon h1{
+    font-size: 8vh;
+    font-weight: 500;
+    line-height: 1;
+    font-weight: 700;
+    margin-top: 10px;
+}
+#aboutCon p{
+    font-size: 20px;
+    line-height: 1;
+    margin-top: 15px;
+    width: 80%;
+}
+#aboutCon button{
+    padding: 10px 30px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #030f0f;
+    margin-top: 30px;
+}
+
+/* this is contect page */
+#container{
+    font-family: FontThree;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 80px;
+    height: 100vh;
+    width: 100%;
+
+}
+#form{
+    height: 80%;
+    width: 30%;
+    padding: 30px 40px;
+    background-color: #2c3e50;
+    border-radius: 10px;
+    box-shadow: 5px 5px 30px #030f0f;
+}
+#info{
+    box-shadow: 5px 5px 30px #030f0f;
+    background-color: #2c3e50;
+    height: 80%;
+    width: 30%;
+    padding: 30px 40px;
+    border-radius: 10px;
+}
+#form h1{
+    font-size: 3vw;
+}
+#form p{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.input{
+    border: none;
+    font-size: 15px;
+    background-color: transparent;
+    padding: 10px 15px;
+    margin-top: 20px;
+    color: white;
+    border-bottom: 2px solid rgba(103, 99, 99, 0.582);
+}
+#form button{
+    margin-top: 40px;
+    padding: 10px 30px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #030f0f;
+}
+#info h1{
+    font-size: 3vw;
+}
+.logos{
+    flex-direction: start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    display: flex;
+    padding: 10px 15px;
+    border: 1px solid rgba(245, 245, 245, 0.498);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.logos:hover {
+    background-color: #f0f0f039; 
+  }
+.logos a{
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.logo{
+    height: 30px;
+    width: 30px;
+}
+#down{
+    text-align: center;
+    font-size: 20px;
+    font-style: italic;
+    padding: 20px;
+    font-family: fontTwo;
+}
+
+#cursor{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 10;
+    font-size: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;  /* Prevents interference with elements */
+    transition: transform 0.15s ease-out;  /* Smooth animation */
+    will-change: transform; /* Optimized for smoothness */
+
+}
+#down span{
+    font-family: Satisfy;
+    font-size: 30px;
+    font-weight: 500;
+}
+
