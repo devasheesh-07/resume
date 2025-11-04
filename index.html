@@ -1,348 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Devasheesh Vardiya | Software Developer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<body> 
 
-<body>
-  <div id="main">
-    <div id="cursor"></div>
-    <div id="nav">
-      <h1>My Portfolio</h1>
-      <div id="nav-part2">
-        <a href="#">Home</a>
-        <a href="#page3">Projects</a>
-        <a href="#about">About</a>
-        <a class="btn" href="resume/Devasheesh_resume.pdf">Download Resume</a>
+   <div id="particles-js"></div>
+  <!-- Header -->
+  <header id="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">Deva<span>sheesh</span></a>
+        <div class="nav-links" id="navLinks">
+          <a href="#hero">Home</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-actions">
+          <a href="resume/Devasheesh_resume.pdf" class="btn" download>
+            <i class="fas fa-download"></i> Resume
+          </a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Hello, I'm <span class="text-gradient">Devasheesh Vardiya</span></h1>
+          <h2>Software Developer</h2>
+          <p>I am a passionate Software Developer, crafting scalable and efficient solutions with clean code. With expertise in full-stack development, I turn ideas into seamless digital experiences.</p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/devasheesh-07" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:devasheeshvardiya@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.pexels.com/photos/16129700/pexels-photo-16129700/free-photo-of-man-in-glasses-working-on-pc-at-table.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Devasheesh Vardiya">
+        </div>
       </div>
     </div>
-    <!-- this is page1 content -->
-    <div id="page1">
-      <div id="left">
-        <h1>Hello,</h1>
-        <h1>I'm <span id="name">Devasheesh Vardiya</span></h1>
-        <h1 class="h1">Software-Developer</h1>
-        <p>
-          I am a passionate Software Developer, crafting scalable and efficient solutions with clean code.
-          With expertise in full-stack development, I turn ideas into seamless digital experiences.
-          I thrive on solving complex problems, optimizing performance, and building innovative applications.
-          Let's collaborate to create impactful technology solutions!.
-        </p>
-        <a href="#container" class="btn">Contact us !</a>
-      </div>
-      <div id="right">
-        <div id="overlay"></div>
-        <img
-          src="https://images.pexels.com/photos/16129700/pexels-photo-16129700/free-photo-of-man-in-glasses-working-on-pc-at-table.jpeg?auto=compress&cs=tinysrgb&w=600"
-          alt="" />
-      </div>
-    </div>
+  </section>
 
-    <!-- this is skill content -->
-    <div id="page2">
-      <h2>My Skills</h2>
-      <div id="skills">
-        <div class="skill">
-          <img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-html-5-logo-icon-download-in-svg-png-gif-file-formats--programming-langugae-language-pack-logos-icons-1175208.png"
-            alt="HTML" />
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-card">
+          <img src="https://cdn.iconscout.com/icon/free/png-256/free-html-5-logo-icon-download-in-svg-png-gif-file-formats--programming-langugae-language-pack-logos-icons-1175208.png" alt="HTML">
           <span>HTML</span>
         </div>
-        <div class="skill">
-          <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS" />
+        <div class="skill-card">
+          <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS">
           <span>CSS</span>
         </div>
-        <div class="skill">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png"
-            alt="JavaScript" />
+        <div class="skill-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png" alt="C++">
           <span>C++</span>
         </div>
-        <div class="skill">
-          <img
-            src="https://cdn3d.iconscout.com/3d/free/preview/free-python-3d-icon-download-in-png-blend-fbx-gltf-file-formats--pycharm-logo-programming-language-high-level-interpreted-coding-lang-pack-logos-icons-7578001.png?f=webp&h=700"
-            alt="Tailwind CSS" />
+        <div class="skill-card">
+          <img src="https://cdn3d.iconscout.com/3d/free/preview/free-python-3d-icon-download-in-png-blend-fbx-gltf-file-formats--pycharm-logo-programming-language-high-level-interpreted-coding-lang-pack-logos-icons-7578001.png?f=webp&h=700" alt="Python">
           <span>Python</span>
         </div>
-        <div class="skill">
-          <img
-            src="https://static.vecteezy.com/system/resources/thumbnails/036/044/336/small_2x/sql-database-icon-logo-design-ui-or-ux-app-png.png"
-            alt="Node.js" />
+        <div class="skill-card">
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/036/044/336/small_2x/sql-database-icon-logo-design-ui-or-ux-app-png.png" alt="SQL">
           <span>SQL</span>
         </div>
-        <div class="skill">
-          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Express.js" />
+        <div class="skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
           <span>GitHub</span>
         </div>
-        <div class="skill">
-          <img src="https://www.svgrepo.com/show/331488/mongodb.svg" alt="MongoDB" />
+        <div class="skill-card">
+          <img src="https://www.svgrepo.com/show/331488/mongodb.svg" alt="MongoDB">
           <span>MongoDB</span>
         </div>
-        <div class="skill">
-          <img src="https://cdn-icons-png.flaticon.com/128/10828/10828578.png" alt="MongoDB" />
+        <div class="skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/128/10828/10828578.png" alt="React.js">
           <span>React.js</span>
         </div>
-        <div class="skill">
-          <img src="photos/azure.png" alt="MongoDB" />
+        <div class="skill-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="Azure Cloud">
           <span>Azure Cloud</span>
         </div>
       </div>
     </div>
-    <!-- this is project page3 -->
-    <div id="page3">
-      <div id="nav3">
-        <h1>My Projects</h1>
-      </div>
-      <div id="projectCon">
-        <div class="projectShow">
-          <img class="proImage" src="./photos/Screenshot (1111).png" alt="" />
-          <div class="proDetails">
-            <h2 class="proHeading">Online Food Application</h2>
-            <p class="proDesc">
-              This is a MERN stack project where I built something amazing using
-              modern technologies.
-            </p>
-            <!-- <a class="proA" href="https://euphonious-pika-9ab5a2.netlify.app/" -->
-            <a class="proA">View More</a>
+  </section>
 
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-container">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./photos/Screenshot (1111).png" alt="Online Food Application">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Online Food Application</h3>
+            <p class="project-description">A full-stack food delivery application built with modern web technologies and responsive design.</p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">MongoDB</span>
+              <span class="project-tag">Express</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-outline">View Details</a>
+              <a href="#" class="btn">Live Demo</a>
+            </div>
           </div>
         </div>
-        <div class="projectShow">
-          <img class="proImage" src="./photos/pro2.jpg" alt="" />
-          <div class="proDetails">
-            <h2 class="proHeading">Plant Disease Classifire</h2>
-            <p class="proDesc">
-              Developed a Plant Disease Classifier using Machine Learning to detect crop infections with high accuracy.
-              image processing to classify plant diseases efficiently.
-              Aiming to support farmers with early detection for better yield and sustainable agriculture
-            </p>
-            <a class="proA">View More</a>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./photos/pro2.jpg" alt="Plant Disease Classifier">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Plant Disease Classifier</h3>
+            <p class="project-description">Machine learning application to detect plant diseases with high accuracy using image processing.</p>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">TensorFlow</span>
+              <span class="project-tag">OpenCV</span>
+              <span class="project-tag">Flask</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-outline">View Details</a>
+              <a href="#" class="btn">Live Demo</a>
+            </div>
           </div>
         </div>
-        <div class="projectShow">
-          <img class="proImage" src="./photos/pro3.png" alt="" />
-          <div class="proDetails">
-            <h2 class="proHeading">AI Chatbot </h2>
-            <p class="proDesc">
-              Built an AI chatbot using Dialogflow and LLM models, integrated with Flask for seamless interaction.
-              Designed to understand natural language, provide intelligent responses, and enhance user engagement.
-              Deployed as a web service, making conversations smarter and more efficient across various applications
-            </p>
-            <a class="proA">View More</a>
+        <div class="project-card">
+          <div class="project-image">
+            <img src="./photos/pro3.png" alt="AI Chatbot">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">AI Chatbot</h3>
+            <p class="project-description">Intelligent chatbot using Dialogflow and LLM models for natural conversations and user assistance.</p>
+            <div class="project-tags">
+              <span class="project-tag">Dialogflow</span>
+              <span class="project-tag">LLM</span>
+              <span class="project-tag">Flask</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a href="#" class="btn btn-outline">View Details</a>
+              <a href="#" class="btn">Live Demo</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- ✅ CERTIFICATION SECTION -->
-    <div id="certifications">
-      <h2>My Certifications</h2>
-      <div id="certContainer">
-        <div class="certCard" data-cert="photos/python-cert.png">
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <div class="certifications-container">
+        <div class="cert-card" data-cert="photos/python-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
           <h3>Python Programming</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/java-cert.png">
+        <div class="cert-card" data-cert="photos/java-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java">
           <h3>Java Development</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/html-cert.png">
+        <div class="cert-card" data-cert="photos/html-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
           <h3>HTML & CSS</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/azure-cert.png">
+        <div class="cert-card" data-cert="photos/azure-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="Azure">
           <h3>Azure Cloud Fundamentals</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/ml-cert.png">
+        <div class="cert-card" data-cert="photos/ml-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Machine Learning">
           <h3>Machine Learning</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/cpp-cert.png">
+        <div class="cert-card" data-cert="photos/cpp-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++">
           <h3>C++ Programming</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/problem-solving-cert.png">
+        <div class="cert-card" data-cert="photos/problem-solving-cert.png">
           <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Problem Solving">
           <h3>Problem Solving</h3>
         </div>
-
-        <div class="certCard" data-cert="photos/isro-cert.png">
+        <div class="cert-card" data-cert="photos/isro-cert.png">
           <img src="https://upload.wikimedia.org/wikipedia/en/3/38/ISRO_logo.svg" alt="ISRO Course">
           <h3>ISRO Space Technology Course</h3>
         </div>
       </div>
-
-      <!-- Certificate Preview Modal -->
-      <div id="certPreview">
-        <img id="certImage" src="" alt="Certificate Preview">
-      </div>
     </div>
+  </section>
 
-
-    <!-- this is about page1 -->
-    <div id="about">
-      <section>
-        <img
-          src="https://images.unsplash.com/photo-1581472723648-909f4851d4ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="" />
-      </section>
-      <div id="aboutCon">
-        <h3>About Us</h3>
-        <h1>We Always Make <br />The Best</h1>
-        <p>
-          I am a Software Developer passionate about building innovative, efficient, and scalable solutions.
-          With a strong grasp of C++ and OOP principles, I develop robust software systems while specializing in
-          MERN stack development using React, SQL, and MongoDB to create dynamic web applications.
-          My expertise extends to Machine Learning, where I built a Plant Disease Classifier, and AI-powered
-          chatbots leveraging Dialogflow, LLM models, and Flask. With a solid foundation in software engineering,
-          I focus on crafting intelligent, user-centric applications that solve real-world problems.
-        </p>
-        <button>Contect Us</button>
-      </div>
-    </div>
-
-    <!-- this is contect page -->
-    <!-- ✅ CONTACT PAGE -->
-    <!-- Contact Section -->
-    <div id="container">
-      <div id="form">
-        <h1>Contact Me</h1>
-        <p>
-          Feel Free To Contact Me Anytime. <br />
-          I’ll get back to you as soon as possible!
-        </p>
-
-        <!-- ✅ Updated form with message field -->
-        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <!-- Your Web3Forms Access Key -->
-          <input type="hidden" name="access_key" value="9eec099e-6093-4504-b435-a6b53d9df4fc" />
-
-          <!-- Timestamp auto-fill -->
-          <input type="hidden" name="timestamp" id="timestamp" />
-
-          <!-- Input Fields -->
-          <input type="text" name="name" required class="input" placeholder="Enter Name" />
-          <input type="email" name="email" required class="input" placeholder="Enter Email" />
-
-          <!-- ✅ New Message Field -->
-          <textarea name="message" id="message" class="input" placeholder="Enter your message (at least 20 words)"
-            rows="4" required></textarea>
-
-          <br />
-          <button type="submit">Submit Form</button>
-        </form>
-
-        <!-- Success / Error message -->
-        <div id="form-status" style="margin-top:15px; font-weight:500;"></div>
-      </div>
-
-      <div id="info">
-        <h1>Connect Details</h1>
-
-        <div class="logos">
-          <img class="logo"
-            src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-512.png" alt="" />
-          <a href="mailto:devasheeshvardiya@gmail.com">devasheeshvardiya@gmail.com</a>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-container">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1581472723648-909f4851d4ae?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Me">
         </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/9946/9946316.png" alt="" />
-          <a href="tel:+912344328989">+91 2344328989</a>
-        </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/684/684908.png" alt="" />
-          <a
-            href="https://www.google.com/maps/place/%E0%A4%97%E0%A5%81%E0%A4%A8%E0%A4%BE,+%E0%A4%AE%E0%A4%A7%E0%A5%8D%E0%A4%AF+%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%A6%E0%A5%87%E0%A4%B6/">Address
-            - Bhopal, (M.P.)</a>
-        </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="" />
-          <a href="#">Instagram</a>
-        </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/25/25657.png" alt="" />
-          <a href="https://github.com/devasheesh-07">GitHub</a>
-        </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/3536/3536505.png" alt="" />
-          <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/">LinkedIn</a>
-        </div>
-
-        <div class="logos">
-          <img class="logo" src="https://cdn-icons-png.flaticon.com/128/3536/3536445.png" alt="" />
-          <a href="#">WhatsApp</a>
+        <div class="about-content">
+          <h2>Professional Software Developer</h2>
+          <p>I am a Software Developer passionate about building innovative, efficient, and scalable solutions. With a strong grasp of C++ and OOP principles, I develop robust software systems while specializing in MERN stack development using React, SQL, and MongoDB to create dynamic web applications.</p>
+          <p>My expertise extends to Machine Learning, where I built a Plant Disease Classifier, and AI-powered chatbots leveraging Dialogflow, LLM models, and Flask. With a solid foundation in software engineering, I focus on crafting intelligent, user-centric applications that solve real-world problems.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-number">15+</div>
+              <div class="stat-text">Projects Completed</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">8+</div>
+              <div class="stat-text">Certifications</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">10+</div>
+              <div class="stat-text">Technologies</div>
+            </div>
+            <div class="stat">
+              <div class="stat-number">2+</div>
+              <div class="stat-text">Years Experience</div>
+            </div>
+          </div>
+          <a href="#contact" class="btn" style="margin-top: 30px;">Hire Me</a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- ✅ Add this script at the bottom of your HTML body -->
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <p>devasheeshvardiya@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Phone</h3>
+              <p>+91 2344328989</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Location</h3>
+              <p>Bhopal, Madhya Pradesh</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-details">
+              <h3>LinkedIn</h3>
+              <p>linkedin.com/in/devasheesh-vardiya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">Deva<span>sheesh</span></div>
+          <p class="footer-text">Software Developer specializing in full-stack development, machine learning, and AI solutions. Crafting digital experiences that solve real-world problems.</p>
+          <div class="social-links">
+            <a href="https://github.com/devasheesh-07" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:devasheeshvardiya@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Quick Links</h3>
+          <div class="footer-links">
+            <a href="#hero">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Services</h3>
+          <div class="footer-links">
+            <a href="#">Web Development</a>
+            <a href="#">Mobile Apps</a>
+            <a href="#">AI Solutions</a>
+            <a href="#">Cloud Services</a>
+            <a href="#">Consulting</a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Contact</h3>
+          <div class="footer-links">
+            <a href="mailto:devasheeshvardiya@gmail.com">devasheeshvardiya@gmail.com</a>
+            <a href="tel:+912344328989">+91 2344328989</a>
+            <a href="#">Bhopal, Madhya Pradesh</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Created With ❤️ By <span>Devasheesh</span> | © 2023 All Rights Reserved</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- this is buttom heading -->
-    <div id="down">Create With ❤️ By <span>Devasheesh</span></div>
-
+  <!-- Certificate Modal -->
+  <div class="modal" id="certModal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <img class="modal-image" id="modalImage" src="" alt="Certificate">
+    </div>
   </div>
-  <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script>
-    // Add current timestamp automatically
-    document.getElementById("timestamp").value = new Date().toLocaleString();
 
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-    const messageInput = document.getElementById("message");
-
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      // ✅ Word count validation (at least 20 words)
-      const message = messageInput.value.trim();
-      const wordCount = message.split(/\s+/).length;
-      if (wordCount < 20) {
-        status.innerHTML = "⚠️ Please enter at least 20 words in your message.";
-        return;
-      }
-
-      status.innerHTML = "Sending... ⏳";
-      const data = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { Accept: "application/json" },
-        });
-
-        if (response.ok) {
-          status.innerHTML = "✅ Thank you! Your message has been sent.";
-          form.reset();
-        } else {
-          status.innerHTML = "❌ Oops! There was an error sending your message.";
-        }
-      } catch (error) {
-        status.innerHTML = "⚠️ Network error. Please try again.";
-      }
-    });
-  </script>
-
-
-
-  <script type="module" src="script.js"></script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
-
 </html>
