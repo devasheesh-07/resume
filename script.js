@@ -123,3 +123,51 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
+
+// ✅ CERTIFICATION MODAL FUNCTIONALITY
+const certCards = document.querySelectorAll(".certCard");
+const certPreview = document.getElementById("certPreview");
+const certImage = document.getElementById("certImage");
+
+certCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const certSrc = card.getAttribute("data-cert");
+    certImage.src = certSrc;
+    certPreview.style.display = "flex";
+  });
+});
+
+certPreview.addEventListener("click", () => {
+  certPreview.style.display = "none";
+});
+
+// ✅ GSAP Animation for Certifications Section
+gsap.from("#certContainer .certCard", {
+  scrollTrigger: {
+    trigger: "#certifications",
+    start: "top 80%",
+  },
+  opacity: 0,
+  y: 50,
+  duration: 0.6,
+  stagger: 0.2,
+  ease: "power2.out",
+}); 
+// ✅ Handle contact form submission with AJAX
+document.getElementById("contactForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(e.target);
+
+  const response = await fetch("/send_message", {
+    method: "POST",
+    body: formData,
+  });
+
+  const result = await response.json();
+  alert(result.message);
+
+  if (result.status === "success") {
+    e.target.reset();
+  }
+});
+

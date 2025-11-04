@@ -452,3 +452,77 @@ h1 span{
     font-weight: 500;
 }
 
+/* ✅ CERTIFICATION SECTION */
+#certifications {
+  background-color: #2c3e50;
+  text-align: center;
+  padding: 80px 40px;
+}
+
+#certifications h2 {
+  font-size: 2.5em;
+  color: #00df82;
+  margin-bottom: 40px;
+  font-family: fontTwo;
+}
+
+#certContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.certCard {
+  background-color: #3A4A61;
+  width: 200px;
+  padding: 25px 15px;
+  border-radius: 15px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.certCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.certCard img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.certCard h3 {
+  font-size: 18px;
+  color: white;
+  font-family: fontThree;
+}
+
+/* ✅ Certificate Preview Modal */
+#certPreview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#certPreview img {
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
