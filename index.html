@@ -196,7 +196,7 @@
       <h2 class="section-title">Certifications</h2>
       <div class="certifications-container">
         <div class="cert-card" data-cert="photos/python-cert.png">
-          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
+          <img src="photos/pro2.jpg" alt="Python">
           <h3>Python Programming</h3>
         </div>
         <div class="cert-card" data-cert="photos/java-cert.png">
@@ -229,6 +229,57 @@
         </div>
       </div>
     </div>
+    <!-- Enhanced Certificate Modal -->
+    <div class="cert-modal" id="certModal">
+      <div class="cert-modal-overlay" id="certModalOverlay"></div>
+      <div class="cert-modal-content">
+        <div class="cert-modal-header">
+          <h3 class="cert-modal-title" id="certModalTitle">Certificate</h3>
+          <button class="cert-modal-close" id="certModalClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="cert-modal-body">
+          <div class="cert-image-container">
+            <img class="cert-modal-image" id="certModalImage" src="" alt="Certificate">
+            <div class="cert-loading" id="certLoading">
+              <div class="loading-spinner"></div>
+              <p>Loading certificate...</p>
+            </div>
+          </div>
+          <div class="cert-details" id="certDetails">
+            <h4 id="certName">Certificate Name</h4>
+            <div class="cert-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar"></i>
+                <span id="certDate">Issued Date</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-building"></i>
+                <span id="certIssuer">Issuing Organization</span>
+              </div>
+              <div class="meta-item">
+                <i class="fas fa-id-card"></i>
+                <span id="certId">Certificate ID</span>
+              </div>
+            </div>
+            <p class="cert-description" id="certDescription">Certificate description goes here...</p>
+            <div class="cert-actions">
+              <button class="btn btn-outline" id="downloadCert">
+                <i class="fas fa-download"></i> Download
+              </button>
+              <button class="btn" id="verifyCert">
+                <i class="fas fa-shield-alt"></i> Verify
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </section>
 
   <!-- About Section -->
@@ -416,6 +467,7 @@
       <img class="modal-image" id="modalImage" src="" alt="Certificate">
     </div>
   </div>
+
 
   <!-- JavaScript -->
   <script src="script.js"></script>

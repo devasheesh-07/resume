@@ -28,32 +28,187 @@ window.addEventListener('scroll', () => {
 });
 
 // Certificate Modal
+// Enhanced Certificate Modal
 const certCards = document.querySelectorAll('.cert-card');
 const certModal = document.getElementById('certModal');
-const modalImage = document.getElementById('modalImage');
-const modalClose = document.getElementById('modalClose');
+const certModalOverlay = document.getElementById('certModalOverlay');
+const certModalClose = document.getElementById('certModalClose');
+const certModalImage = document.getElementById('certModalImage');
+const certModalTitle = document.getElementById('certModalTitle');
+const certName = document.getElementById('certName');
+const certDate = document.getElementById('certDate');
+const certIssuer = document.getElementById('certIssuer');
+const certId = document.getElementById('certId');
+const certDescription = document.getElementById('certDescription');
+const certLoading = document.getElementById('certLoading');
+const downloadCert = document.getElementById('downloadCert');
+const verifyCert = document.getElementById('verifyCert');
 
+// Certificate data - you can expand this with your actual certificate details
+const certificateData = {
+  'python-cert.png': {
+    name: 'Python Programming Professional Certificate',
+    date: 'June 2023',
+    issuer: 'Coding Academy',
+    id: 'PC-2023-001',
+    description: 'Comprehensive certification in Python programming covering advanced concepts, data structures, algorithms, and real-world project implementation.',
+    verifyUrl: '#'
+  },
+  'java-cert.png': {
+    name: 'Java Development Master Certificate',
+    date: 'August 2023',
+    issuer: 'Tech Institute',
+    id: 'JD-2023-045',
+    description: 'Advanced Java programming certification focusing on enterprise development, Spring Framework, and modern software architecture patterns.',
+    verifyUrl: '#'
+  },
+  'html-cert.png': {
+    name: 'HTML & CSS Expert Certification',
+    date: 'March 2023',
+    issuer: 'Web Development Pro',
+    id: 'HC-2023-078',
+    description: 'Mastery in modern web development technologies including HTML5, CSS3, responsive design, and accessibility standards.',
+    verifyUrl: '#'
+  },
+  'azure-cert.png': {
+    name: 'Microsoft Azure Cloud Fundamentals',
+    date: 'September 2023',
+    issuer: 'Microsoft',
+    id: 'AZ-900-2023',
+    description: 'Official Microsoft certification demonstrating proficiency in cloud concepts, Azure services, security, and pricing.',
+    verifyUrl: '#'
+  },
+  'ml-cert.png': {
+    name: 'Machine Learning Specialist',
+    date: 'November 2023',
+    issuer: 'AI Institute',
+    id: 'ML-2023-112',
+    description: 'Advanced machine learning certification covering neural networks, deep learning, and real-world AI implementation strategies.',
+    verifyUrl: '#'
+  },
+  'cpp-cert.png': {
+    name: 'C++ Programming Professional',
+    date: 'January 2023',
+    issuer: 'Code Masters',
+    id: 'CPP-2023-023',
+    description: 'Expert-level C++ programming certification focusing on memory management, performance optimization, and modern C++ standards.',
+    verifyUrl: '#'
+  },
+  'problem-solving-cert.png': {
+    name: 'Advanced Problem Solving',
+    date: 'July 2023',
+    issuer: 'Algorithm Pro',
+    id: 'PS-2023-067',
+    description: 'Certification in advanced algorithmic problem solving, data structures, and competitive programming techniques.',
+    verifyUrl: '#'
+  },
+  'isro-cert.png': {
+    name: 'ISRO Space Technology Course',
+    date: 'December 2023',
+    issuer: 'Indian Space Research Organization',
+    id: 'ISRO-ST-2023',
+    description: 'Specialized certification in space technology and satellite systems from Indias premier space research organization.',
+    verifyUrl: '#'
+  }
+};
+
+// Open certificate modal
 certCards.forEach(card => {
   card.addEventListener('click', () => {
     const certSrc = card.getAttribute('data-cert');
-    modalImage.src = certSrc;
-    certModal.style.display = 'flex';
+    const certKey = certSrc.split('/').pop(); // Get filename
+
+    // Show loading state
+    certLoading.classList.add('active');
+    certModalImage.style.display = 'none';
+
+    // Set certificate image
+    certModalImage.src = certSrc;
+    certModalImage.alt = certificateData[certKey]?.name || 'Certificate';
+
+    // Set certificate details
+    if (certificateData[certKey]) {
+      const cert = certificateData[certKey];
+      certModalTitle.textContent = 'Certificate Details';
+      certName.textContent = cert.name;
+      certDate.textContent = cert.date;
+      certIssuer.textContent = cert.issuer;
+      certId.textContent = cert.id;
+      certDescription.textContent = cert.description;
+
+      // Set up download button
+      downloadCert.onclick = () => downloadCertificate(certSrc, cert.name);
+
+      // Set up verify button
+      verifyCert.onclick = () => window.open(cert.verifyUrl, '_blank');
+    }
+
+    // Show modal
+    certModal.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Image load event
+    certModalImage.onload = () => {
+      certLoading.classList.remove('active');
+      certModalImage.style.display = 'block';
+    };
+
+    // Image error event
+    certModalImage.onerror = () => {
+      certLoading.classList.remove('active');
+      certModalImage.style.display = 'block';
+      certModalImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMWUyOTNiIi8+CjxwYXRoIGQ9Ik04MCA2MEgxMjBNODAgODBIMTIwTTgwIDEwMEgxMjBNNjAgNjBWNzBNNjAgODBWNzBNNjAgMTAwVjcwTTE0MCA2MFY3ME0xNDAgODBWNzBNMTQwIDEwMFY3MCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMTAwIiB5PSI0MCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5DZXJ0aWZpY2F0ZSBJbWFnZSBVbmF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
+    };
   });
 });
 
-modalClose.addEventListener('click', () => {
-  certModal.style.display = 'none';
+// Close modal functions
+function closeCertModal() {
+  certModal.classList.remove('active');
   document.body.style.overflow = 'auto';
-});
+  certModalImage.classList.remove('zoomed');
+}
 
-certModal.addEventListener('click', (e) => {
-  if (e.target === certModal) {
-    certModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+certModalClose.addEventListener('click', closeCertModal);
+certModalOverlay.addEventListener('click', closeCertModal);
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && certModal.classList.contains('active')) {
+    closeCertModal();
   }
 });
 
+// Zoom functionality for certificate image
+certModalImage.addEventListener('click', (e) => {
+  e.stopPropagation();
+  certModalImage.classList.toggle('zoomed');
+});
+
+// Download certificate function
+function downloadCertificate(imageSrc, fileName) {
+  const link = document.createElement('a');
+  link.href = imageSrc;
+  link.download = `${fileName.replace(/\s+/g, '_')}.png`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // Show download confirmation
+  const originalText = downloadCert.innerHTML;
+  downloadCert.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+  downloadCert.disabled = true;
+
+  setTimeout(() => {
+    downloadCert.innerHTML = originalText;
+    downloadCert.disabled = false;
+  }, 2000);
+}
+
+// Prevent modal content click from closing modal
+certModal.querySelector('.cert-modal-content').addEventListener('click', (e) => {
+  e.stopPropagation();
+});
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && certModal.style.display === 'flex') {
