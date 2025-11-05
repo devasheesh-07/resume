@@ -49,15 +49,15 @@ const certificateData = {
   'python-cert.png': {
     name: 'Python Programming Professional Certificate',
     date: 'June 2023',
-    issuer: 'Coding Academy',
+    issuer: 'Hacker Rank',
     id: 'PC-2023-001',
     description: 'Comprehensive certification in Python programming covering advanced concepts, data structures, algorithms, and real-world project implementation.',
     verifyUrl: '#'
   },
   'java-cert.png': {
-    name: 'Java Development Master Certificate',
+    name: 'Java Development  Certificate',
     date: 'August 2023',
-    issuer: 'Tech Institute',
+    issuer: 'Hacker Rank',
     id: 'JD-2023-045',
     description: 'Advanced Java programming certification focusing on enterprise development, Spring Framework, and modern software architecture patterns.',
     verifyUrl: '#'
@@ -65,14 +65,14 @@ const certificateData = {
   'html-cert.png': {
     name: 'HTML & CSS Expert Certification',
     date: 'March 2023',
-    issuer: 'Web Development Pro',
+    issuer: 'IBM skills',
     id: 'HC-2023-078',
     description: 'Mastery in modern web development technologies including HTML5, CSS3, responsive design, and accessibility standards.',
     verifyUrl: '#'
   },
   'azure-cert.png': {
     name: 'Microsoft Azure Cloud Fundamentals',
-    date: 'September 2023',
+    date: 'April 2024',
     issuer: 'Microsoft',
     id: 'AZ-900-2023',
     description: 'Official Microsoft certification demonstrating proficiency in cloud concepts, Azure services, security, and pricing.',
@@ -89,7 +89,7 @@ const certificateData = {
   'cpp-cert.png': {
     name: 'C++ Programming Professional',
     date: 'January 2023',
-    issuer: 'Code Masters',
+    issuer: 'Code Chef',
     id: 'CPP-2023-023',
     description: 'Expert-level C++ programming certification focusing on memory management, performance optimization, and modern C++ standards.',
     verifyUrl: '#'
@@ -97,7 +97,7 @@ const certificateData = {
   'problem-solving-cert.png': {
     name: 'Advanced Problem Solving',
     date: 'July 2023',
-    issuer: 'Algorithm Pro',
+    issuer: 'Code Chef',
     id: 'PS-2023-067',
     description: 'Certification in advanced algorithmic problem solving, data structures, and competitive programming techniques.',
     verifyUrl: '#'
@@ -107,7 +107,7 @@ const certificateData = {
     date: 'December 2023',
     issuer: 'Indian Space Research Organization',
     id: 'ISRO-ST-2023',
-    description: 'Specialized certification in space technology and satellite systems from Indias premier space research organization.',
+    description: 'Specialized certification in python technology and satellite systems from Indias premier space research organization.',
     verifyUrl: '#'
   }
 };
@@ -235,7 +235,135 @@ contactForm.addEventListener('submit', async (e) => {
     formStatus.innerHTML = '⚠️ Please enter at least 20 words in your message.';
     formStatus.style.color = '#f87171';
     return;
+  } 
+
+  // Project data with actual URLs
+const projectDetails = {
+  'news-aggregator': {
+    title: 'News Aggregator AI',
+    image: './photos/news-aggregator.jpg',
+    description: 'An intelligent news aggregation platform that uses advanced AI to summarize articles, extract key insights, and provide interactive Q&A based on the content.',
+    features: [
+      'AI-powered article summarization using transformer models',
+      'Interactive Q&A chatbot for news content exploration',
+      'Real-time news processing and analysis',
+      'Multi-source news aggregation',
+      'Sentiment analysis and trend detection'
+    ],
+    technologies: ['Python', 'Flask', 'React', 'MongoDB', 'Transformers', 'NLTK', 'BeautifulSoup'],
+    github: 'https://github.com/yourusername/news-aggregator-ai',
+    demo: 'https://news-aggregator-ai-demo.netlify.app',
+    live: 'https://news-aggregator-ai-demo.netlify.app'
+  },
+  'food-app': {
+    title: 'Online Food Application',
+    image: './photos/Screenshot (1111).png',
+    description: 'A comprehensive food delivery platform with real-time order tracking, payment integration, and restaurant management system.',
+    features: [
+      'Real-time order tracking and notifications',
+      'Secure payment gateway integration',
+      'Restaurant and menu management',
+      'User reviews and ratings system',
+      'Responsive design for all devices'
+    ],
+    technologies: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe API', 'Socket.io'],
+    github: 'https://github.com/yourusername/food-delivery-app',
+    demo: 'https://food-delivery-demo.herokuapp.com',
+    live: 'https://food-delivery-demo.herokuapp.com'
+  },
+  'plant-disease': {
+    title: 'Plant Disease Classifier',
+    image: './photos/pro2.jpg',
+    description: 'Machine learning application that identifies plant diseases from images with high accuracy using computer vision and deep learning.',
+    features: [
+      'Image-based disease detection using CNN',
+      'Real-time classification with high accuracy',
+      'Disease prevention recommendations',
+      'Mobile-friendly interface',
+      'Multi-plant species support'
+    ],
+    technologies: ['Python', 'TensorFlow', 'OpenCV', 'Flask', 'CNN', 'Keras'],
+    github: 'https://github.com/yourusername/plant-disease-classifier',
+    demo: 'https://plant-disease-classifier.streamlit.app',
+    live: 'https://plant-disease-classifier.streamlit.app'
+  },
+  'ai-chatbot': {
+    title: 'AI Chatbot',
+    image: './photos/pro3.png',
+    description: 'Intelligent chatbot using Dialogflow and LLM models for natural conversations and user assistance with contextual understanding.',
+    features: [
+      'Natural language processing and understanding',
+      'Contextual conversation management',
+      'Multi-platform integration capabilities',
+      'Custom intent recognition',
+      'Real-time response generation'
+    ],
+    technologies: ['Dialogflow', 'LLM', 'Flask', 'JavaScript', 'WebSocket', 'Node.js'],
+    github: 'https://github.com/yourusername/ai-chatbot',
+    demo: 'https://ai-chatbot-demo.vercel.app',
+    live: 'https://ai-chatbot-demo.vercel.app'
+  },
+  'analytics-dashboard': {
+    title: 'E-Commerce Analytics Dashboard',
+    image: './photos/analytics-dashboard.jpg',
+    description: 'Real-time analytics dashboard for e-commerce platforms with predictive analytics, sales forecasting, and customer behavior insights.',
+    features: [
+      'Real-time sales and revenue tracking',
+      'Predictive analytics for sales forecasting',
+      'Customer behavior and segmentation analysis',
+      'Interactive data visualizations',
+      'Custom reporting and export features'
+    ],
+    technologies: ['React', 'Python', 'D3.js', 'Pandas', 'FastAPI', 'Chart.js'],
+    github: 'https://github.com/yourusername/ecommerce-analytics',
+    demo: 'https://ecommerce-analytics-dashboard.netlify.app',
+    live: 'https://ecommerce-analytics-dashboard.netlify.app'
   }
+};
+
+// Rest of the JavaScript code remains the same...
+function openProjectModal(projectId) {
+  const project = projectDetails[projectId];
+  if (!project) return;
+
+  const modalBody = document.getElementById('projectModalBody');
+  modalBody.innerHTML = `
+    <div class="project-modal-image">
+      <img src="${project.image}" alt="${project.title}">
+    </div>
+    <div class="project-modal-details">
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      
+      <div class="project-modal-features">
+        <h4>Key Features</h4>
+        <ul>
+          ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+        </ul>
+      </div>
+      
+      <div class="project-modal-tech">
+        <h4>Technologies Used</h4>
+        <div class="tech-stack">
+          ${project.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join('')}
+        </div>
+      </div>
+      
+      <div class="project-actions" style="margin-top: 30px;">
+        <a href="${project.github}" class="btn btn-outline" target="_blank">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="${project.live}" class="btn" target="_blank">
+          <i class="fas fa-external-link-alt"></i> Live Demo
+        </a>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('projectModalTitle').textContent = project.title;
+  projectModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
   // Show loading state
   const submitBtn = contactForm.querySelector('button[type="submit"]');
