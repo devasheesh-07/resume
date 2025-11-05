@@ -4,8 +4,8 @@ const navLinks = document.getElementById('navLinks');
 
 mobileMenuBtn.addEventListener('click', () => {
   navLinks.classList.toggle('active');
-  mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
-    ? '<i class="fas fa-times"></i>' 
+  mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+    ? '<i class="fas fa-times"></i>'
     : '<i class="fas fa-bars"></i>';
 });
 
@@ -63,40 +63,76 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Form Submission
+// Form Submission with Web3Forms
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   // Get form data
   const formData = new FormData(contactForm);
-  const name = contactForm.querySelector('input[type="text"]').value;
-  const email = contactForm.querySelector('input[type="email"]').value;
-  const message = contactForm.querySelector('textarea').value;
-  
-  // Simple validation
-  if (!name || !email || !message) {
-    alert('Please fill in all fields');
+  const message = contactForm.querySelector('textarea[name="message"]').value;
+
+  // Word count validation (at least 20 words)
+  const wordCount = message.trim().split(/\s+/).length;
+  if (wordCount < 20) {
+    formStatus.innerHTML = '⚠️ Please enter at least 20 words in your message.';
+    formStatus.style.color = '#f87171';
     return;
   }
-  
-  // Here you would typically send the data to a server
-  // For now, we'll just show a success message
-  alert('Thank you for your message! I will get back to you soon.');
-  contactForm.reset();
-});
 
+  // Show loading state
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  submitBtn.disabled = true;
+
+  formStatus.innerHTML = 'Sending your message...';
+  formStatus.style.color = '#3b82f6';
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      formStatus.innerHTML = '✅ Thank you! Your message has been sent successfully.';
+      formStatus.style.color = '#10b981';
+      contactForm.reset();
+    } else {
+      formStatus.innerHTML = '❌ There was an error sending your message. Please try again.';
+      formStatus.style.color = '#f87171';
+      console.error('Form submission error:', result);
+    }
+  } catch (error) {
+    formStatus.innerHTML = '⚠️ Network error. Please check your connection and try again.';
+    formStatus.style.color = '#f87171';
+    console.error('Form submission error:', error);
+  } finally {
+    // Reset button state
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+  }
+});
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
-    
+
     const targetId = this.getAttribute('href');
     if (targetId === '#') return;
-    
+
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
       const offsetTop = targetElement.offsetTop - 80; // Adjust for header height
-      
+
       window.scrollTo({
         top: offsetTop,
         behavior: 'smooth'
@@ -139,7 +175,7 @@ window.addEventListener('scroll', () => {
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
     const sectionHeight = section.clientHeight;
-    
+
     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
       current = section.getAttribute('id');
     }
@@ -251,10 +287,10 @@ function initParticles() {
 function initCustomCursor() {
   const cursor = document.createElement('div');
   const cursorFollower = document.createElement('div');
-  
+
   cursor.classList.add('cursor');
   cursorFollower.classList.add('cursor-follower');
-  
+
   document.body.appendChild(cursor);
   document.body.appendChild(cursorFollower);
 
@@ -266,11 +302,11 @@ function initCustomCursor() {
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    
+
     // Update main cursor immediately
     cursor.style.left = mouseX + 'px';
     cursor.style.top = mouseY + 'px';
-    
+
     // Create star trail
     createStarTrail(mouseX, mouseY);
   });
@@ -279,13 +315,13 @@ function initCustomCursor() {
   function animateFollower() {
     followerX += (mouseX - followerX) * 0.1;
     followerY += (mouseY - followerY) * 0.1;
-    
+
     cursorFollower.style.left = followerX - 20 + 'px';
     cursorFollower.style.top = followerY - 20 + 'px';
-    
+
     requestAnimationFrame(animateFollower);
   }
-  
+
   animateFollower();
 
   // Hide cursor when leaving window
@@ -303,7 +339,7 @@ function initCustomCursor() {
   document.addEventListener('click', () => {
     cursor.style.transform = 'scale(0.8)';
     cursorFollower.style.transform = 'scale(1.5)';
-    
+
     setTimeout(() => {
       cursor.style.transform = 'scale(1)';
       cursorFollower.style.transform = 'scale(1)';
@@ -315,24 +351,24 @@ function initCustomCursor() {
 function createStarTrail(x, y) {
   const star = document.createElement('div');
   star.classList.add('star');
-  
+
   // Random direction and distance
   const angle = Math.random() * Math.PI * 2;
   const distance = 20 + Math.random() * 30;
   const tx = Math.cos(angle) * distance;
   const ty = Math.sin(angle) * distance;
-  
+
   star.style.setProperty('--tx', tx + 'px');
   star.style.setProperty('--ty', ty + 'px');
   star.style.left = x + 'px';
   star.style.top = y + 'px';
-  
+
   // Random color from theme
   const colors = ['#2563eb', '#06b6d4', '#3b82f6', '#ffffff'];
   star.style.background = colors[Math.floor(Math.random() * colors.length)];
-  
+
   document.body.appendChild(star);
-  
+
   // Remove star after animation
   setTimeout(() => {
     star.remove();
@@ -361,9 +397,9 @@ function createSparkle(x, y) {
   sparkle.style.left = x + 'px';
   sparkle.style.top = y + 'px';
   sparkle.style.boxShadow = '0 0 10px 2px #3b82f6';
-  
+
   document.body.appendChild(sparkle);
-  
+
   // Sparkle animation
   sparkle.animate([
     { transform: 'scale(0) rotate(0deg)', opacity: 1 },
@@ -373,7 +409,7 @@ function createSparkle(x, y) {
     duration: 600,
     easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
   });
-  
+
   // Remove sparkle after animation
   setTimeout(() => {
     sparkle.remove();
