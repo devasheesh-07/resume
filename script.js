@@ -27,8 +27,70 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Certificate Modal
-// Enhanced Certificate Modal
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const offsetTop = targetElement.offsetTop - 80; // Adjust for header height
+
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Scroll Animations
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in-up');
+    }
+  });
+}, observerOptions);
+
+// Observe elements for animation
+document.querySelectorAll('.skill-card, .project-card, .cert-card, .about-image, .about-content, .contact-form, .contact-item, .stat').forEach(el => {
+  observer.observe(el);
+});
+
+// Add active state to navigation based on scroll position
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  const scrollPosition = window.scrollY + 100;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// ===== CERTIFICATE MODAL =====
 const certCards = document.querySelectorAll('.cert-card');
 const certModal = document.getElementById('certModal');
 const certModalOverlay = document.getElementById('certModalOverlay');
@@ -39,130 +101,177 @@ const certName = document.getElementById('certName');
 const certDate = document.getElementById('certDate');
 const certIssuer = document.getElementById('certIssuer');
 const certId = document.getElementById('certId');
+const certDuration = document.getElementById('certDuration');
 const certDescription = document.getElementById('certDescription');
 const certLoading = document.getElementById('certLoading');
 const downloadCert = document.getElementById('downloadCert');
 const verifyCert = document.getElementById('verifyCert');
 
-// Certificate data - you can expand this with your actual certificate details
+// Certificate data
 const certificateData = {
-  'python-cert.png': {
+  'python_basic certificate_page-0001.jpg': {
     name: 'Python Programming Professional Certificate',
     date: 'June 2023',
-    issuer: 'Hacker Rank',
+    issuer: 'Coding Academy',
     id: 'PC-2023-001',
-    description: 'Comprehensive certification in Python programming covering advanced concepts, data structures, algorithms, and real-world project implementation.',
+    duration: '3 Months',
+    description: 'Comprehensive certification in Python programming covering advanced concepts, data structures, algorithms, and real-world project implementation. Mastered object-oriented programming, web development with Django, and data analysis with Pandas.',
+    skills: ['Python 3', 'OOP', 'Data Structures', 'Django', 'Pandas', 'NumPy', 'Flask'],
     verifyUrl: '#'
   },
-  'java-cert.png': {
-    name: 'Java Development  Certificate',
+  'java_basic certificate_page-0001.jpg': {
+    name: 'Java Development Master Certificate',
     date: 'August 2023',
-    issuer: 'Hacker Rank',
+    issuer: 'Tech Institute',
     id: 'JD-2023-045',
-    description: 'Advanced Java programming certification focusing on enterprise development, Spring Framework, and modern software architecture patterns.',
+    duration: '4 Months',
+    description: 'Advanced Java programming certification focusing on enterprise development, Spring Framework, and modern software architecture patterns. Gained expertise in multi-threading, design patterns, and microservices.',
+    skills: ['Java 11', 'Spring Boot', 'Hibernate', 'Maven', 'REST APIs', 'Microservices', 'JUnit'],
     verifyUrl: '#'
   },
-  'html-cert.png': {
+  'devansh_234-Learn C++ - Pro (1)_page-0001.jpg': {
+    name: 'C++ Programming Professional',
+    date: 'January 2023',
+    issuer: 'Code Masters',
+    id: 'CPP-2023-023',
+    duration: '2 Months',
+    description: 'Expert-level C++ programming certification focusing on memory management, performance optimization, and modern C++ standards including C++17 and C++20 features.',
+    skills: ['C++17', 'STL', 'Memory Management', 'Templates', 'Multithreading', 'Performance Optimization'],
+    verifyUrl: '#'
+  },
+  'WebDevelopmentFundamentals_Badge20240625-7-ii24zb_page-0001.jpg': {
     name: 'HTML & CSS Expert Certification',
     date: 'March 2023',
-    issuer: 'IBM skills',
+    issuer: 'Web Development Pro',
     id: 'HC-2023-078',
-    description: 'Mastery in modern web development technologies including HTML5, CSS3, responsive design, and accessibility standards.',
+    duration: '2 Months',
+    description: 'Mastery in modern web development technologies including HTML5, CSS3, responsive design, and accessibility standards. Built complex layouts with Flexbox and Grid.',
+    skills: ['HTML5', 'CSS3', 'Flexbox', 'Grid', 'Responsive Design', 'SASS', 'Accessibility'],
     verifyUrl: '#'
   },
-  'azure-cert.png': {
+  'Azure Fundamentals_page-0001.jpg': {
     name: 'Microsoft Azure Cloud Fundamentals',
-    date: 'April 2024',
+    date: 'September 2023',
     issuer: 'Microsoft',
     id: 'AZ-900-2023',
-    description: 'Official Microsoft certification demonstrating proficiency in cloud concepts, Azure services, security, and pricing.',
+    duration: '1 Month',
+    description: 'Official Microsoft certification demonstrating proficiency in cloud concepts, Azure services, security, and pricing. Understanding of core Azure services and cloud concepts.',
+    skills: ['Azure Fundamentals', 'Cloud Computing', 'Azure Services', 'Security', 'Networking', 'Storage'],
     verifyUrl: '#'
   },
-  'ml-cert.png': {
+  'ArtificialIntelligenceFundamentals_Badge20240625-7-i50cnb_page-0001.jpg': {
     name: 'Machine Learning Specialist',
     date: 'November 2023',
     issuer: 'AI Institute',
     id: 'ML-2023-112',
-    description: 'Advanced machine learning certification covering neural networks, deep learning, and real-world AI implementation strategies.',
+    duration: '5 Months',
+    description: 'Advanced machine learning certification covering neural networks, deep learning, and real-world AI implementation strategies. Hands-on experience with TensorFlow and scikit-learn.',
+    skills: ['Python', 'TensorFlow', 'scikit-learn', 'Neural Networks', 'Data Preprocessing', 'Model Evaluation'],
     verifyUrl: '#'
   },
-  'cpp-cert.png': {
-    name: 'C++ Programming Professional',
-    date: 'January 2023',
-    issuer: 'Code Chef',
-    id: 'CPP-2023-023',
-    description: 'Expert-level C++ programming certification focusing on memory management, performance optimization, and modern C++ standards.',
-    verifyUrl: '#'
-  },
-  'problem-solving-cert.png': {
+  'devansh_234-C++ for problem solving - 1_page-0001.jpg': {
     name: 'Advanced Problem Solving',
     date: 'July 2023',
-    issuer: 'Code Chef',
+    issuer: 'Algorithm Pro',
     id: 'PS-2023-067',
-    description: 'Certification in advanced algorithmic problem solving, data structures, and competitive programming techniques.',
+    duration: '3 Months',
+    description: 'Certification in advanced algorithmic problem solving, data structures, and competitive programming techniques. Mastered complex algorithms and optimization techniques.',
+    skills: ['Algorithms', 'Data Structures', 'Dynamic Programming', 'Graph Theory', 'Time Complexity', 'Problem Solving'],
     verifyUrl: '#'
   },
-  'isro-cert.png': {
+  'isro_page-0001.jpg': {
     name: 'ISRO Space Technology Course',
     date: 'December 2023',
     issuer: 'Indian Space Research Organization',
     id: 'ISRO-ST-2023',
-    description: 'Specialized certification in python technology and satellite systems from Indias premier space research organization.',
+    duration: '6 Months',
+    description: 'Specialized certification in space technology and satellite systems from Indias premier space research organization. Covered satellite communication, remote sensing, and space mission design.',
+    skills: ['Satellite Technology', 'Remote Sensing', 'Space Mission Design', 'Orbital Mechanics', 'Communication Systems'],
+    verifyUrl: '#'
+  },
+  'GitHubFoundations_Badge20240702-7-l4a49m_page-0001.jpg': {
+    name: 'GitHub Foundation',
+    date: 'July 2024',
+    issuer: 'GitHub',
+    id: 'GHF-2024-001',
+    duration: '1 Month',
+    description: 'GitHub Foundations certification demonstrating proficiency in Git version control, repository management, collaboration workflows, and GitHub ecosystem.',
+    skills: ['Git', 'Version Control', 'GitHub', 'Repository Management', 'Collaboration', 'CI/CD'],
     verifyUrl: '#'
   }
 };
 
 // Open certificate modal
+function openCertificateModal(certSrc) {
+  const certKey = certSrc.split('/').pop();
+  
+  // Show loading state
+  certLoading.classList.add('active');
+  certModalImage.style.display = 'none';
+  
+  // Set certificate image
+  certModalImage.src = certSrc;
+  certModalImage.alt = certificateData[certKey]?.name || 'Certificate';
+  
+  // Set certificate details
+  if (certificateData[certKey]) {
+    const cert = certificateData[certKey];
+    certModalTitle.textContent = 'Certificate Details';
+    certName.textContent = cert.name;
+    certDate.textContent = cert.date;
+    certIssuer.textContent = cert.issuer;
+    certId.textContent = cert.id;
+    certDuration.textContent = cert.duration;
+    certDescription.textContent = cert.description;
+    
+    // Set skills
+    const skillsContainer = document.getElementById('certSkills');
+    if (skillsContainer && cert.skills) {
+      skillsContainer.innerHTML = cert.skills.map(skill => 
+        `<span class="skill-badge">${skill}</span>`
+      ).join('');
+    }
+    
+    // Set up download button
+    downloadCert.onclick = () => downloadCertificate(certSrc, cert.name);
+    
+    // Set up verify button
+    verifyCert.onclick = () => {
+      if (cert.verifyUrl && cert.verifyUrl !== '#') {
+        window.open(cert.verifyUrl, '_blank');
+      } else {
+        alert('Verification link not available for this certificate.');
+      }
+    };
+  }
+  
+  // Show modal
+  certModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  
+  // Image load event
+  certModalImage.onload = () => {
+    certLoading.classList.remove('active');
+    certModalImage.style.display = 'block';
+  };
+  
+  // Image error event
+  certModalImage.onerror = () => {
+    certLoading.classList.remove('active');
+    certModalImage.style.display = 'block';
+    certModalImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMWUyOTNiIi8+CjxwYXRoIGQ9Ik04MCA2MEgxMjBNODAgODBIMTIwTTgwIDEwMEgxMjBNNjAgNjBWNzBNNjAgODBWNzBNNjAgMTAwVjcwTTE0MCA2MFY3ME0xNDAgODBWNzBNMTQwIDEwMFY3MCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMTAwIiB5PSI0MCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5DZXJ0aWZpY2F0ZSBJbWFnZSBVbmF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
+  };
+}
+
+// Certificate card click handlers
 certCards.forEach(card => {
   card.addEventListener('click', () => {
     const certSrc = card.getAttribute('data-cert');
-    const certKey = certSrc.split('/').pop(); // Get filename
-
-    // Show loading state
-    certLoading.classList.add('active');
-    certModalImage.style.display = 'none';
-
-    // Set certificate image
-    certModalImage.src = certSrc;
-    certModalImage.alt = certificateData[certKey]?.name || 'Certificate';
-
-    // Set certificate details
-    if (certificateData[certKey]) {
-      const cert = certificateData[certKey];
-      certModalTitle.textContent = 'Certificate Details';
-      certName.textContent = cert.name;
-      certDate.textContent = cert.date;
-      certIssuer.textContent = cert.issuer;
-      certId.textContent = cert.id;
-      certDescription.textContent = cert.description;
-
-      // Set up download button
-      downloadCert.onclick = () => downloadCertificate(certSrc, cert.name);
-
-      // Set up verify button
-      verifyCert.onclick = () => window.open(cert.verifyUrl, '_blank');
-    }
-
-    // Show modal
-    certModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Image load event
-    certModalImage.onload = () => {
-      certLoading.classList.remove('active');
-      certModalImage.style.display = 'block';
-    };
-
-    // Image error event
-    certModalImage.onerror = () => {
-      certLoading.classList.remove('active');
-      certModalImage.style.display = 'block';
-      certModalImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDIwMCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMWUyOTNiIi8+CjxwYXRoIGQ9Ik04MCA2MEgxMjBNODAgODBIMTIwTTgwIDEwMEgxMjBNNjAgNjBWNzBNNjAgODBWNzBNNjAgMTAwVjcwTTE0MCA2MFY3ME0xNDAgODBWNzBNMTQwIDEwMFY3MCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjIiLz4KPHRleHQgeD0iMTAwIiB5PSI0MCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5DZXJ0aWZpY2F0ZSBJbWFnZSBVbmF2YWlsYWJsZTwvdGV4dD4KPC9zdmc+';
-    };
+    openCertificateModal(certSrc);
   });
 });
 
-// Close modal functions
+// Close certificate modal
 function closeCertModal() {
   certModal.classList.remove('active');
   document.body.style.overflow = 'auto';
@@ -171,13 +280,6 @@ function closeCertModal() {
 
 certModalClose.addEventListener('click', closeCertModal);
 certModalOverlay.addEventListener('click', closeCertModal);
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && certModal.classList.contains('active')) {
-    closeCertModal();
-  }
-});
 
 // Zoom functionality for certificate image
 certModalImage.addEventListener('click', (e) => {
@@ -205,43 +307,23 @@ function downloadCertificate(imageSrc, fileName) {
   }, 2000);
 }
 
-// Prevent modal content click from closing modal
-certModal.querySelector('.cert-modal-content').addEventListener('click', (e) => {
-  e.stopPropagation();
-});
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && certModal.style.display === 'flex') {
-    certModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+  if (e.key === 'Escape' && certModal.classList.contains('active')) {
+    closeCertModal();
   }
 });
 
-// Form Submission
-// Form Submission with Web3Forms
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('form-status');
+// ===== PROJECT MODAL =====
+const projectModal = document.getElementById('projectModal');
+const projectModalOverlay = document.getElementById('projectModalOverlay');
+const projectModalClose = document.getElementById('projectModalClose');
 
-contactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  // Get form data
-  const formData = new FormData(contactForm);
-  const message = contactForm.querySelector('textarea[name="message"]').value;
-
-  // Word count validation (at least 20 words)
-  const wordCount = message.trim().split(/\s+/).length;
-  if (wordCount < 20) {
-    formStatus.innerHTML = '⚠️ Please enter at least 20 words in your message.';
-    formStatus.style.color = '#f87171';
-    return;
-  } 
-
-  // Project data with actual URLs
+// Project data
 const projectDetails = {
   'news-aggregator': {
     title: 'News Aggregator AI',
-    image: './photos/news-aggregator.jpg',
+    image: './photos/Top-News-Aggregator-Websites-scaled.png',
     description: 'An intelligent news aggregation platform that uses advanced AI to summarize articles, extract key insights, and provide interactive Q&A based on the content.',
     features: [
       'AI-powered article summarization using transformer models',
@@ -302,26 +384,10 @@ const projectDetails = {
     github: 'https://github.com/yourusername/ai-chatbot',
     demo: 'https://ai-chatbot-demo.vercel.app',
     live: 'https://ai-chatbot-demo.vercel.app'
-  },
-  'analytics-dashboard': {
-    title: 'E-Commerce Analytics Dashboard',
-    image: './photos/analytics-dashboard.jpg',
-    description: 'Real-time analytics dashboard for e-commerce platforms with predictive analytics, sales forecasting, and customer behavior insights.',
-    features: [
-      'Real-time sales and revenue tracking',
-      'Predictive analytics for sales forecasting',
-      'Customer behavior and segmentation analysis',
-      'Interactive data visualizations',
-      'Custom reporting and export features'
-    ],
-    technologies: ['React', 'Python', 'D3.js', 'Pandas', 'FastAPI', 'Chart.js'],
-    github: 'https://github.com/yourusername/ecommerce-analytics',
-    demo: 'https://ecommerce-analytics-dashboard.netlify.app',
-    live: 'https://ecommerce-analytics-dashboard.netlify.app'
   }
 };
 
-// Rest of the JavaScript code remains the same...
+// Open project modal
 function openProjectModal(projectId) {
   const project = projectDetails[projectId];
   if (!project) return;
@@ -365,6 +431,50 @@ function openProjectModal(projectId) {
   document.body.style.overflow = 'hidden';
 }
 
+// Project card click handlers
+document.querySelectorAll('[data-project]').forEach(element => {
+  element.addEventListener('click', (e) => {
+    e.preventDefault();
+    const projectId = element.getAttribute('data-project');
+    openProjectModal(projectId);
+  });
+});
+
+// Close project modal
+function closeProjectModal() {
+  projectModal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+projectModalClose.addEventListener('click', closeProjectModal);
+projectModalOverlay.addEventListener('click', closeProjectModal);
+
+// Close modal with Escape key for project modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && projectModal.classList.contains('active')) {
+    closeProjectModal();
+  }
+});
+
+// ===== FORM SUBMISSION =====
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // Get form data
+  const formData = new FormData(contactForm);
+  const message = contactForm.querySelector('textarea[name="message"]').value;
+
+  // Word count validation (at least 20 words)
+  const wordCount = message.trim().split(/\s+/).length;
+  if (wordCount < 20) {
+    formStatus.innerHTML = '⚠️ Please enter at least 20 words in your message.';
+    formStatus.style.color = '#f87171';
+    return;
+  }
+
   // Show loading state
   const submitBtn = contactForm.querySelector('button[type="submit"]');
   const originalText = submitBtn.innerHTML;
@@ -404,169 +514,8 @@ function openProjectModal(projectId) {
     submitBtn.disabled = false;
   }
 });
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
 
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      const offsetTop = targetElement.offsetTop - 80; // Adjust for header height
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
-
-// Scroll Animations
-const observerOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('fade-in-up');
-    }
-  });
-}, observerOptions);
-
-// Observe elements for animation
-document.querySelectorAll('.skill-card, .project-card, .cert-card, .about-image, .about-content, .contact-form, .contact-item, .stat').forEach(el => {
-  observer.observe(el);
-});
-
-// Add loading animation
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
-
-// Add active state to navigation based on scroll position
-const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  const scrollPosition = window.scrollY + 100;
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-      current = section.getAttribute('id');
-    }
-  });
-
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${current}`) {
-      link.classList.add('active');
-    }
-  });
-});
-
-// ===== PARTICLE BACKGROUND INITIALIZATION =====
-function initParticles() {
-  if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: ['#2563eb', '#06b6d4', '#3b82f6']
-        },
-        shape: {
-          type: 'circle',
-          stroke: {
-            width: 0,
-            color: '#000000'
-          }
-        },
-        opacity: {
-          value: 0.5,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#3b82f6',
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: 'none',
-          random: true,
-          straight: false,
-          out_mode: 'out',
-          bounce: false,
-          attract: {
-            enable: true,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: {
-          onhover: {
-            enable: true,
-            mode: 'grab'
-          },
-          onclick: {
-            enable: true,
-            mode: 'push'
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 200,
-            line_linked: {
-              opacity: 0.3
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
-        }
-      },
-      retina_detect: true
-    });
-  }
-}
-
-// ===== CUSTOM CURSOR =====
+// ===== MOUSE EFFECTS =====
 function initCustomCursor() {
   const cursor = document.createElement('div');
   const cursorFollower = document.createElement('div');
@@ -699,6 +648,100 @@ function createSparkle(x, y) {
   }, 600);
 }
 
+// ===== PARTICLE BACKGROUND INITIALIZATION =====
+function initParticles() {
+  if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ['#2563eb', '#06b6d4', '#3b82f6']
+        },
+        shape: {
+          type: 'circle',
+          stroke: {
+            width: 0,
+            color: '#000000'
+          }
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#3b82f6',
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: 'none',
+          random: true,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: {
+            enable: true,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'grab'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          },
+          resize: true
+        },
+        modes: {
+          grab: {
+            distance: 200,
+            line_linked: {
+              opacity: 0.3
+            }
+          },
+          push: {
+            particles_nb: 4
+          }
+        }
+      },
+      retina_detect: true
+    });
+  }
+}
+
 // ===== INITIALIZE ALL EFFECTS =====
 function initMouseEffects() {
   // Only initialize on non-mobile devices
@@ -709,8 +752,15 @@ function initMouseEffects() {
   initParticles();
 }
 
-// Initialize mouse effects when page loads
+// Initialize effects when page loads
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
   initMouseEffects();
+});
+
+// Prevent modal content click from closing modals
+document.querySelectorAll('.cert-modal-content, .project-modal-content').forEach(content => {
+  content.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 });

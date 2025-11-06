@@ -10,8 +10,8 @@
 </head>
 
 <body>
-
   <div id="particles-js"></div>
+  
   <!-- Header -->
   <header id="header">
     <div class="container">
@@ -26,7 +26,7 @@
           <a href="#contact">Contact</a>
         </div>
         <div class="nav-actions">
-          <a href="resume/Devasheesh_resume.pdf" class="btn" download>
+          <a href="resume/mainresumed1 (1).pdf" class="btn" download>
             <i class="fas fa-download"></i> Resume
           </a>
           <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -52,8 +52,8 @@
             <a href="#contact" class="btn btn-outline">Contact Me</a>
           </div>
           <div class="social-links">
-            <a href="https://github.com/devasheesh-07" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn"><i
+            <a href="https://github.com/devasheesh-07" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn" target="_blank"><i
                 class="fab fa-linkedin"></i></a>
             <a href="mailto:devasheeshvardiya@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -68,7 +68,6 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
   <!-- Skills Section -->
   <section id="skills" class="section">
     <div class="container">
@@ -85,7 +84,6 @@
           <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg" alt="CSS">
           <span>CSS</span>
         </div>
-
         <div class="skill-card">
           <img src="https://cdn-icons-png.flaticon.com/128/10828/10828578.png" alt="React.js">
           <span>React.js</span>
@@ -117,7 +115,6 @@
           <span>Pandas</span>
         </div>
 
-
         <!-- Backend & Databases -->
         <div class="skill-card">
           <img src="https://static-00.iconduck.com/assets.00/flask-icon-2048x1826-ith2z3y3.png" alt="Flask">
@@ -143,33 +140,30 @@
           <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="Azure Cloud">
           <span>Azure Cloud</span>
         </div>
+      </div>
 
+      <!-- Skills Categories -->
+      <div class="skills-categories">
+        <div class="category">
+          <h3>Frontend Development</h3>
+          <p>HTML, CSS, JavaScript, React.js</p>
+        </div>
+        <div class="category">
+          <h3>Backend Development</h3>
+          <p>Python, Flask, C++, SQL, MongoDB</p>
+        </div>
+        <div class="category">
+          <h3>Data Science & ML</h3>
+          <p>NumPy, Pandas, Scikit-learn</p>
+        </div>
+        <div class="category">
+          <h3>Tools & Platforms</h3>
+          <p>GitHub, Azure Cloud, Figma, Postman</p>
+        </div>
       </div>
-    </div>
-
-    <!-- Skills Categories -->
-    <div class="skills-categories">
-      <div class="category">
-        <h3>Frontend Development</h3>
-        <p>HTML, CSS, JavaScript, React.js</p>
-      </div>
-      <div class="category">
-        <h3>Backend Development</h3>
-        <p>Python, Flask, C++, SQL, MongoDB</p>
-      </div>
-      <div class="category">
-        <h3>Data Science & ML</h3>
-        <p>NumPy, Pandas, Scikit-learn</p>
-      </div>
-      <div class="category">
-        <h3>Tools & Platforms</h3>
-        <p>GitHub, Azure Cloud, Figma, Postman</p>
-      </div>
-    </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
   <!-- Projects Section -->
   <section id="projects" class="section">
     <div class="container">
@@ -181,7 +175,7 @@
             <img src="./photos/Top-News-Aggregator-Websites-scaled.png" alt="News Aggregator AI">
             <div class="project-overlay">
               <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                <a href="#" class="project-link" data-project="news-aggregator"><i class="fas fa-eye"></i></a>
                 <a href="https://github.com/yourusername/news-aggregator-ai" class="project-link" target="_blank"><i
                     class="fas fa-code"></i></a>
                 <a href="https://news-aggregator-ai-demo.netlify.app" class="project-link" target="_blank"><i
@@ -228,7 +222,7 @@
             <img src="./photos/Screenshot (1111).png" alt="Online Food Application">
             <div class="project-overlay">
               <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                <a href="#" class="project-link" data-project="food-app"><i class="fas fa-eye"></i></a>
                 <a href="https://github.com/yourusername/food-delivery-app" class="project-link" target="_blank"><i
                     class="fas fa-code"></i></a>
                 <a href="https://food-delivery-demo.herokuapp.com" class="project-link" target="_blank"><i
@@ -274,7 +268,7 @@
             <img src="./photos/pro2.jpg" alt="Plant Disease Classifier">
             <div class="project-overlay">
               <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                <a href="#" class="project-link" data-project="plant-disease"><i class="fas fa-eye"></i></a>
                 <a href="https://github.com/yourusername/plant-disease-classifier" class="project-link"
                   target="_blank"><i class="fas fa-code"></i></a>
                 <a href="https://plant-disease-classifier.streamlit.app" class="project-link" target="_blank"><i
@@ -320,7 +314,7 @@
             <img src="./photos/pro3.png" alt="AI Chatbot">
             <div class="project-overlay">
               <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
+                <a href="#" class="project-link" data-project="ai-chatbot"><i class="fas fa-eye"></i></a>
                 <a href="https://github.com/yourusername/ai-chatbot" class="project-link" target="_blank"><i
                     class="fas fa-code"></i></a>
                 <a href="https://ai-chatbot-demo.vercel.app" class="project-link" target="_blank"><i
@@ -359,52 +353,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Project 5: E-Commerce Analytics Dashboard
-        <div class="project-card">
-          <div class="project-image">
-            <img src="./photos/analytics-dashboard.jpg" alt="E-Commerce Analytics Dashboard">
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" class="project-link"><i class="fas fa-eye"></i></a>
-                <a href="https://github.com/yourusername/ecommerce-analytics" class="project-link" target="_blank"><i
-                    class="fas fa-code"></i></a>
-                <a href="https://ecommerce-analytics-dashboard.netlify.app" class="project-link" target="_blank"><i
-                    class="fas fa-external-link-alt"></i></a>
-              </div>
-            </div> 
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">E-Commerce Analytics Dashboard</h3>
-            <p class="project-description">Real-time analytics dashboard for e-commerce platforms with predictive
-              analytics, sales forecasting, and customer behavior insights.</p>
-            <div class="project-features">
-              <div class="feature">
-                <i class="fas fa-chart-bar"></i>
-                <span>Real-time Analytics</span>
-              </div>
-              <div class="feature">
-                <i class="fas fa-crystal-ball"></i>
-                <span>Predictive Forecasting</span>
-              </div>
-              <div class="feature">
-                <i class="fas fa-users"></i>
-                <span>Customer Insights</span>
-              </div>
-            </div>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">D3.js</span>
-              <span class="project-tag">Pandas</span>
-              <span class="project-tag">FastAPI</span>
-            </div>
-            <div class="project-actions">
-              <a href="#" class="btn btn-outline" data-project="analytics-dashboard">View Details</a>
-              <a href="https://ecommerce-analytics-dashboard.netlify.app" class="btn" target="_blank">Live Demo</a>
-            </div>
-          </div>-->
-        </div> 
       </div>
     </div>
   </section>
@@ -414,46 +362,76 @@
     <div class="container">
       <h2 class="section-title">Certifications</h2>
       <div class="certifications-container">
-        <div class="cert-card" data-cert="photos/python-cert.png">
-          <img src="photos/pro2.jpg" alt="Python">
+        <!-- Programming Languages -->
+        <div class="cert-card" data-cert="photos/python_basic certificate_page-0001.jpg">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python">
           <h3>Python Programming</h3>
+          <p class="cert-level">Basic to Advanced</p>
         </div>
-        <div class="cert-card" data-cert="photos/java-cert.png">
+
+        <div class="cert-card" data-cert="photos/java_basic certificate_page-0001.jpg">
           <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java">
           <h3>Java Development</h3>
+          <p class="cert-level">Core Java & OOP</p>
         </div>
-        <div class="cert-card" data-cert="photos/html-cert.png">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
-          <h3>HTML & CSS</h3>
-        </div>
-        <div class="cert-card" data-cert="photos/azure-cert.png">
-          <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="Azure">
-          <h3>Azure Cloud Fundamentals</h3>
-        </div>
-        <div class="cert-card" data-cert="photos/ml-cert.png">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Machine Learning">
-          <h3>Machine Learning</h3>
-        </div>
-        <div class="cert-card" data-cert="photos/cpp-cert.png">
+
+        <div class="cert-card" data-cert="photos/devansh_234-Learn C++ - Pro (1)_page-0001.jpg">
           <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C++">
           <h3>C++ Programming</h3>
+          <p class="cert-level">Advanced C++ Concepts</p>
         </div>
-        <div class="cert-card" data-cert="photos/problem-solving-cert.png">
+
+        <!-- Web Development -->
+        <div class="cert-card" data-cert="photos/WebDevelopmentFundamentals_Badge20240625-7-ii24zb_page-0001.jpg">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML">
+          <h3>HTML & CSS</h3>
+          <p class="cert-level">Web Development</p>
+        </div>
+
+        <!-- Cloud & DevOps -->
+        <div class="cert-card" data-cert="photos/Azure Fundamentals_page-0001.jpg">
+          <img src="https://cdn-icons-png.flaticon.com/512/906/906324.png" alt="Azure">
+          <h3>Azure Cloud Fundamentals</h3>
+          <p class="cert-level">Microsoft Certified</p>
+        </div>
+
+        <!-- Data Science & AI -->
+        <div class="cert-card"
+          data-cert="photos/ArtificialIntelligenceFundamentals_Badge20240625-7-i50cnb_page-0001.jpg">
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Machine Learning">
+          <h3>Machine Learning</h3>
+          <p class="cert-level">AI & Data Science</p>
+        </div>
+
+        <!-- Problem Solving -->
+        <div class="cert-card" data-cert="photos/devansh_234-C++ for problem solving - 1_page-0001.jpg">
           <img src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png" alt="Problem Solving">
           <h3>Problem Solving</h3>
+          <p class="cert-level">Algorithms & DSA</p>
         </div>
-        <div class="cert-card" data-cert="photos/isro-cert.png">
+
+        <!-- Specialized Courses -->
+        <div class="cert-card" data-cert="photos/isro_page-0001.jpg">
           <img src="photos/Indian_Space_Research_Organisation_Logo.svg.png" alt="ISRO Course">
-          <h3>ISRO Space Technology Course</h3>
+          <h3>ISRO Space Technology</h3>
+          <p class="cert-level">Advanced python Course</p>
+        </div>
+
+        <!-- GitHub Foundation -->
+        <div class="cert-card" data-cert="photos/GitHubFoundations_Badge20240702-7-l4a49m_page-0001.jpg">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          <h3>GitHub Foundation</h3>
+          <p class="cert-level">Git & Version Control</p> 
         </div>
       </div>
     </div>
+
     <!-- Enhanced Certificate Modal -->
     <div class="cert-modal" id="certModal">
       <div class="cert-modal-overlay" id="certModalOverlay"></div>
       <div class="cert-modal-content">
         <div class="cert-modal-header">
-          <h3 class="cert-modal-title" id="certModalTitle">Certificate</h3>
+          <h3 class="cert-modal-title" id="certModalTitle">Certificate Details</h3>
           <button class="cert-modal-close" id="certModalClose">
             <i class="fas fa-times"></i>
           </button>
@@ -481,24 +459,30 @@
                 <i class="fas fa-id-card"></i>
                 <span id="certId">Certificate ID</span>
               </div>
+              <div class="meta-item">
+                <i class="fas fa-clock"></i>
+                <span id="certDuration">Duration</span>
+              </div>
             </div>
             <p class="cert-description" id="certDescription">Certificate description goes here...</p>
+            <div class="cert-skills">
+              <h5>Skills Acquired</h5>
+              <div class="skills-list" id="certSkills">
+                <!-- Skills will be dynamically added -->
+              </div>
+            </div>
             <div class="cert-actions">
               <button class="btn btn-outline" id="downloadCert">
-                <i class="fas fa-download"></i> Download
+                <i class="fas fa-download"></i> Download PDF
               </button>
               <button class="btn" id="verifyCert">
-                <i class="fas fa-shield-alt"></i> Verify
+                <i class="fas fa-shield-alt"></i> Verify Online
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
   </section>
 
   <!-- About Section -->
@@ -544,7 +528,6 @@
   </section>
 
   <!-- Contact Section -->
-  <!-- Contact Section -->
   <section id="contact" class="section">
     <div class="container">
       <h2 class="section-title">Get In Touch</h2>
@@ -557,9 +540,6 @@
             <input type="hidden" name="subject" value="New Message from Portfolio Contact Form">
             <input type="hidden" name="from_name" value="Portfolio Website">
             <input type="checkbox" name="botcheck" style="display: none;">
-
-            <!-- Redirect after success (optional) -->
-            <!-- <input type="hidden" name="redirect" value="https://web3forms.com/success"> -->
 
             <!-- Form Fields -->
             <div class="form-group">
@@ -637,8 +617,8 @@
           <p class="footer-text">Software Developer specializing in full-stack development, machine learning, and AI
             solutions. Crafting digital experiences that solve real-world problems.</p>
           <div class="social-links">
-            <a href="https://github.com/devasheesh-07" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn"><i
+            <a href="https://github.com/devasheesh-07" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/devasheesh-vardiya-0a805923b/" title="LinkedIn" target="_blank"><i
                 class="fab fa-linkedin"></i></a>
             <a href="mailto:devasheeshvardiya@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -674,21 +654,29 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>Created With ❤️ By <span>Devasheesh</span> | © 2023 All Rights Reserved</p>
+        <p>Created With  By <span>Devasheesh</span> | © 2023 All Rights Reserved</p>
       </div>
     </div>
   </footer>
 
-  <!-- Certificate Modal -->
-  <div class="modal" id="certModal">
-    <div class="modal-content">
-      <span class="modal-close" id="modalClose">&times;</span>
-      <img class="modal-image" id="modalImage" src="" alt="Certificate">
+  <!-- Project Modal -->
+  <div class="project-modal" id="projectModal">
+    <div class="project-modal-overlay" id="projectModalOverlay"></div>
+    <div class="project-modal-content">
+      <div class="project-modal-header">
+        <h3 class="project-modal-title" id="projectModalTitle">Project Details</h3>
+        <button class="project-modal-close" id="projectModalClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="project-modal-body" id="projectModalBody">
+        <!-- Project details will be dynamically inserted here -->
+      </div>
     </div>
   </div>
 
-
-  <!-- JavaScript -->
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script src="script.js"></script>
 </body>
 

@@ -105,14 +105,6 @@ a {
   color: white;
 }
 
-.btn-accent {
-  background: var(--accent);
-}
-
-.btn-accent:hover {
-  background: #0891b2;
-}
-
 .text-gradient {
   background: linear-gradient(90deg, var(--primary), var(--accent));
   -webkit-background-clip: text;
@@ -307,7 +299,7 @@ header.scrolled {
 }
 
 /* ===== SKILLS SECTION ===== */
- #skills {
+#skills {
   background: var(--dark-alt);
 }
 
@@ -315,6 +307,7 @@ header.scrolled {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 24px;
+  margin-bottom: 60px;
 }
 
 .skill-card {
@@ -328,12 +321,29 @@ header.scrolled {
   align-items: center;
   gap: 16px;
   border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
 }
 
 .skill-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow);
   border-color: var(--primary);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-card:hover::before {
+  left: 100%;
 }
 
 .skill-card img {
@@ -344,19 +354,19 @@ header.scrolled {
 
 .skill-card span {
   font-weight: 600;
-} 
- /* ===== SKILLS CATEGORIES ===== */
+}
+
+/* ===== SKILLS CATEGORIES ===== */
 .skills-categories {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
-  margin-top: 60px;
   padding-top: 40px;
   border-top: 1px solid var(--border);
 }
 
 .category {
-  background: var(--dark-alt);
+  background: var(--dark);
   padding: 30px 25px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -383,141 +393,7 @@ header.scrolled {
   margin: 0;
 }
 
-/* Enhanced skill cards */
-.skill-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
-  transition: left 0.5s ease;
-}
-
-.skill-card:hover::before {
-  left: 100%;
-}
-
-/* Skill level indicators (optional) */
-.skill-level {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--border);
-}
-
-.skill-level::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: var(--primary);
-  width: 0;
-  transition: width 1s ease;
-}
-
-.skill-card:hover .skill-level::after {
-  width: var(--skill-level, 80%);
-}
-
-/* Responsive design for skills categories */
-@media (max-width: 768px) {
-  .skills-categories {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-top: 40px;
-    padding-top: 30px;
-  }
-  
-  .category {
-    padding: 20px;
-  }
-  
-  .category h3 {
-    font-size: 1.1rem;
-  }
-}
-
 /* ===== PROJECTS SECTION ===== */
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-}
-
-.project-card {
-  background: var(--dark-alt);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: var(--transition);
-  border: 1px solid var(--border);
-}
-
-.project-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
-}
-
-.project-image {
-  height: 220px;
-  overflow: hidden;
-}
-
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition);
-}
-
-.project-card:hover .project-image img {
-  transform: scale(1.1);
-}
-
-.project-content {
-  padding: 24px;
-}
-
-.project-title {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.project-description {
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.project-tag {
-  padding: 4px 12px;
-  background: var(--dark);
-  border-radius: 20px;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.project-actions {
-  display: flex;
-  gap: 12px;
-} 
-/* ===== ENHANCED PROJECTS SECTION ===== */
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -667,8 +543,84 @@ header.scrolled {
   text-align: center;
 }
 
-/* Project Details Modal */
-.project-modal {
+/* ===== CERTIFICATIONS SECTION ===== */
+#certifications {
+  background: var(--dark-alt);
+}
+
+.certifications-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.cert-card {
+  background: var(--dark);
+  padding: 25px 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.cert-card:hover::before {
+  left: 100%;
+}
+
+.cert-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+}
+
+.cert-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.cert-card:hover img {
+  transform: scale(1.1);
+}
+
+.cert-card h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.cert-level {
+  font-size: 0.85rem;
+  color: var(--primary);
+  margin: 0;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* ===== ENHANCED CERTIFICATE MODAL ===== */
+.cert-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -679,171 +631,230 @@ header.scrolled {
   justify-content: center;
   z-index: 2000;
   padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-modal.active {
+  display: flex;
+  opacity: 1;
+}
+
+.cert-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
 }
 
-.project-modal.active {
-  display: flex;
-}
-
-.project-modal-content {
+.cert-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
   background: var(--dark);
   border-radius: 20px;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.project-modal-header {
-  padding: 30px;
+.cert-modal.active .cert-modal-content {
+  transform: scale(1);
+}
+
+.cert-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
   background: var(--dark-alt);
   border-bottom: 1px solid var(--border);
-  position: relative;
 }
 
-.project-modal-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+.cert-modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+}
+
+.cert-modal-close {
   background: none;
   border: none;
   color: var(--text-muted);
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 }
 
-.project-modal-close:hover {
+.cert-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: var(--text);
   transform: rotate(90deg);
 }
 
-.project-modal-body {
-  padding: 30px;
+.cert-modal-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  height: 600px;
+  max-height: 70vh;
 }
 
-.project-modal-image {
-  border-radius: 12px;
+.cert-image-container {
+  position: relative;
+  background: var(--dark-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border-right: 1px solid var(--border);
   overflow: hidden;
 }
 
-.project-modal-image img {
-  width: 100%;
-  height: auto;
+.cert-modal-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
 }
 
-.project-modal-details h3 {
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
+.cert-modal-image.zoomed {
+  transform: scale(1.8);
+  cursor: zoom-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.project-modal-features {
-  margin: 25px 0;
-}
-
-.project-modal-features h4 {
-  margin-bottom: 15px;
-  color: var(--text);
-}
-
-.project-modal-tech {
-  margin: 25px 0;
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-  .projects-container {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  }
-  
-  .project-modal-body {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-container {
-    grid-template-columns: 1fr;
-  }
-  
-  .project-actions {
-    flex-direction: column;
-  }
-  
-  .project-features {
-    gap: 8px;
-  }
-  
-  .project-modal-body {
-    padding: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .project-content {
-    padding: 20px;
-  }
-  
-  .project-modal-header {
-    padding: 20px;
-  }
-}
-
-/* ===== CERTIFICATIONS SECTION ===== */
-#certifications {
-  background: var(--dark-alt);
-}
-
-.certifications-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-.cert-card {
-  background: var(--dark);
-  padding: 30px 20px;
-  border-radius: var(--radius);
-  text-align: center;
-  transition: var(--transition);
-  cursor: pointer;
-  border: 1px solid var(--border);
-  display: flex;
+.cert-loading {
+  display: none;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+  color: var(--text-muted);
+}
+
+.cert-loading.active {
+  display: flex;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.cert-details {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.cert-details h4 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  padding: 20px;
+  background: var(--dark-alt);
+  border-radius: 12px;
+  border: 1px solid var(--border);
 }
 
-.cert-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow);
-  border-color: var(--primary);
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
 }
 
-.cert-card img {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
+.meta-item i {
+  width: 20px;
+  color: var(--primary);
 }
 
-.cert-card h3 {
+.cert-description {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.cert-skills {
+  margin: 20px 0;
+}
+
+.cert-skills h5 {
+  color: var(--text);
+  margin-bottom: 12px;
   font-size: 1.1rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  padding: 6px 12px;
+  background: var(--dark-alt);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.skill-badge:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.cert-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.cert-actions .btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -1063,57 +1074,203 @@ footer {
   font-weight: 600;
 }
 
-/* ===== MODAL ===== */
-.modal {
+/* ===== PROJECT MODAL ===== */
+.project-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 2000;
   padding: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
 }
 
-.modal-content {
-  max-width: 800px;
+.project-modal.active {
+  display: flex;
+}
+
+.project-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.project-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
   max-height: 90vh;
   background: var(--dark);
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
+  border-radius: 20px;
   border: 1px solid var(--border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
-.modal-close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.project-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  background: var(--dark-alt);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.project-modal-title {
   font-size: 1.5rem;
-  color: var(--text);
-  background: rgba(0, 0, 0, 0.5);
-  width: 40px;
-  height: 40px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+}
+
+.project-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
   border-radius: 50%;
+  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: var(--transition);
+  width: 40px;
+  height: 40px;
 }
 
-.modal-close:hover {
-  background: rgba(0, 0, 0, 0.7);
+.project-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  transform: rotate(90deg);
 }
 
-.modal-image {
+.project-modal-body {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.project-modal-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.project-modal-image img {
   width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
+  height: auto;
+  border-radius: 12px;
+}
+
+.project-modal-details h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.project-modal-features {
+  margin: 25px 0;
+}
+
+.project-modal-features h4 {
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.project-modal-features ul {
+  padding-left: 20px;
+}
+
+.project-modal-features li {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.project-modal-tech {
+  margin: 25px 0;
+}
+
+.project-modal-tech h4 {
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ===== PARTICLE BACKGROUND ===== */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  z-index: 9999;
+  transition: transform 0.2s ease;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-light);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.3;
+}
+
+/* ===== STAR TRAIL EFFECT ===== */
+.star {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9997;
+  opacity: 0;
+  animation: starFloat 1.5s ease-out forwards;
+}
+
+@keyframes starFloat {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
 }
 
 /* ===== ANIMATIONS ===== */
@@ -1158,6 +1315,20 @@ footer {
 
   .footer-content {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .cert-modal-body,
+  .project-modal-body {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: 80vh;
+  }
+
+  .cert-image-container {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 300px;
+    padding: 20px;
   }
 }
 
@@ -1232,6 +1403,46 @@ footer {
   .footer-content {
     grid-template-columns: 1fr;
   }
+
+  .skills-categories {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .category {
+    padding: 20px;
+  }
+
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-features {
+    gap: 8px;
+  }
+
+  .cert-modal-content,
+  .project-modal-content {
+    width: 95%;
+  }
+
+  .cert-modal-header,
+  .project-modal-header {
+    padding: 16px 20px;
+  }
+
+  .cert-details,
+  .project-modal-body {
+    padding: 20px;
+  }
+
+  .cert-actions {
+    flex-direction: column;
+  }
+
+  .cert-meta {
+    padding: 16px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1250,392 +1461,31 @@ footer {
   .contact-form {
     padding: 24px;
   }
-} 
-/* ===== PARTICLE BACKGROUND ===== */
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  background: linear-gradient(135deg, var(--dark) 0%, var(--dark-alt) 100%);
-}
 
-/* ===== CUSTOM CURSOR ===== */
-.cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--primary);
-  pointer-events: none;
-  mix-blend-mode: difference;
-  z-index: 9999;
-  transition: transform 0.2s ease;
-}
-
-.cursor-follower {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid var(--primary-light);
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.6s ease, opacity 0.6s ease;
-  opacity: 0.3;
-}
-
-/* ===== STAR TRAIL EFFECT ===== */
-.star {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9997;
-  opacity: 0;
-  animation: starFloat 1.5s ease-out forwards;
-}
-
-@keyframes starFloat {
-  0% {
-    opacity: 1;
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(var(--tx), var(--ty)) scale(0);
-  }
-}
-
-/* ===== MOUSE EFFECTS FOR INTERACTIVE ELEMENTS ===== */
-.btn:hover ~ .cursor,
-.skill-card:hover ~ .cursor,
-.project-card:hover ~ .cursor,
-.cert-card:hover ~ .cursor,
-.contact-item:hover ~ .cursor {
-  transform: scale(1.5);
-  background: var(--accent);
-}
-
-.btn:hover ~ .cursor-follower,
-.skill-card:hover ~ .cursor-follower,
-.project-card:hover ~ .cursor-follower,
-.cert-card:hover ~ .cursor-follower,
-.contact-item:hover ~ .cursor-follower {
-  transform: scale(1.2);
-  border-color: var(--accent);
-  opacity: 0.5;
-}
-
-/* Ensure content stays above particles */
-header, section, footer, .modal {
-  position: relative;
-  z-index: 10;
-}
-
-/* Add these to your existing responsive design */
-@media (max-width: 768px) {
   .cursor, .cursor-follower {
     display: none;
   }
-} 
-/* ===== ENHANCED CERTIFICATE MODAL ===== */
-.cert-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
-.cert-modal.active {
-  display: flex;
-  opacity: 1;
-}
-
-.cert-modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-}
-
-.cert-modal-content {
-  position: relative;
-  width: 90%;
-  max-width: 1000px;
-  max-height: 90vh;
-  background: var(--dark);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  transform: scale(0.9);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.cert-modal.active .cert-modal-content {
-  transform: scale(1);
-}
-
-.cert-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 32px;
-  background: var(--dark-alt);
-  border-bottom: 1px solid var(--border);
-}
-
-.cert-modal-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-  margin: 0;
-}
-
-.cert-modal-close {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-}
-
-.cert-modal-close:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text);
-  transform: rotate(90deg);
-}
-
-.cert-modal-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 600px;
-  max-height: 70vh;
-}
-
-.cert-image-container {
-  position: relative;
-  background: var(--dark-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  border-right: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.cert-modal-image {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  cursor: zoom-in;
-}
-
-.cert-modal-image.zoomed {
-  transform: scale(1.8);
-  cursor: zoom-out;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.cert-loading {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  color: var(--text-muted);
-}
-
-.cert-loading.active {
-  display: flex;
-}
-
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--border);
-  border-top: 3px solid var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.cert-details {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  overflow-y: auto;
-}
-
-.cert-details h4 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.cert-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-  background: var(--dark-alt);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-}
-
-.meta-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-muted);
-}
-
-.meta-item i {
-  width: 20px;
-  color: var(--primary);
-}
-
-.cert-description {
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin: 0;
-  font-size: 1rem;
-}
-
-.cert-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: auto;
-}
-
-.cert-actions .btn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-/* Certificate data attributes for dynamic content */
-.cert-card {
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.cert-card:hover {
-  transform: translateY(-5px);
-}
-
-/* Responsive Design for Modal */
-@media (max-width: 968px) {
-  .cert-modal-body {
-    grid-template-columns: 1fr;
-    height: auto;
-    max-height: 80vh;
-  }
-  
-  .cert-image-container {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    max-height: 300px;
-    padding: 20px;
-  }
-  
-  .cert-details {
-    padding: 24px;
-  }
-  
-  .cert-details h4 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .cert-modal-content {
-    width: 95%;
-  }
-  
-  .cert-modal-header {
-    padding: 16px 20px;
-  }
-  
-  .cert-details {
-    padding: 20px;
-  }
-  
-  .cert-actions {
-    flex-direction: column;
-  }
-  
-  .cert-meta {
-    padding: 16px;
-  }
-}
-
-/* Animation for modal entrance */
-@keyframes modalEntrance {
-  from {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-.cert-modal.active .cert-modal-content {
-  animation: modalEntrance 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Scrollbar styling for cert details */
-.cert-details::-webkit-scrollbar {
+/* Scrollbar styling */
+.cert-details::-webkit-scrollbar,
+.project-modal-content::-webkit-scrollbar {
   width: 6px;
 }
 
-.cert-details::-webkit-scrollbar-track {
+.cert-details::-webkit-scrollbar-track,
+.project-modal-content::-webkit-scrollbar-track {
   background: var(--dark-alt);
   border-radius: 3px;
 }
 
-.cert-details::-webkit-scrollbar-thumb {
+.cert-details::-webkit-scrollbar-thumb,
+.project-modal-content::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: 3px;
 }
 
-.cert-details::-webkit-scrollbar-thumb:hover {
+.cert-details::-webkit-scrollbar-thumb:hover,
+.project-modal-content::-webkit-scrollbar-thumb:hover {
   background: var(--primary-light);
 }
