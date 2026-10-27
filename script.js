@@ -4,7 +4,10 @@ const navLinks = document.getElementById('navLinks');
 
 mobileMenuBtn.addEventListener('click', () => {
   navLinks.classList.toggle('active');
-  mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+  const menuIsOpen = navLinks.classList.contains('active');
+  mobileMenuBtn.setAttribute('aria-expanded', String(menuIsOpen));
+  mobileMenuBtn.setAttribute('aria-label', menuIsOpen ? 'Close navigation menu' : 'Open navigation menu');
+  mobileMenuBtn.innerHTML = menuIsOpen
     ? '<i class="fas fa-times"></i>'
     : '<i class="fas fa-bars"></i>';
 });
@@ -13,8 +16,23 @@ mobileMenuBtn.addEventListener('click', () => {
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     navLinks.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
   });
+});
+
+document.querySelectorAll('.skill-card img').forEach(image => {
+  const showFallback = () => {
+    const fallback = document.createElement('span');
+    fallback.className = 'skill-icon-fallback';
+    fallback.textContent = image.alt.slice(0, 2).toUpperCase();
+    fallback.setAttribute('aria-hidden', 'true');
+    image.replaceWith(fallback);
+  };
+
+  image.addEventListener('error', showFallback, { once: true });
+  if (image.complete && image.naturalWidth === 0) showFallback();
 });
 
 // Header Scroll Effect
@@ -649,106 +667,32 @@ function createSparkle(x, y) {
 }
 
 // ===== PARTICLE BACKGROUND INITIALIZATION =====
+// In script.js, REPLACE your whole initParticles() function with this one.
 function initParticles() {
-  if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: ['#2563eb', '#06b6d4', '#3b82f6']
-        },
-        shape: {
-          type: 'circle',
-          stroke: {
-            width: 0,
-            color: '#000000'
-          }
-        },
-        opacity: {
-          value: 0.5,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#3b82f6',
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: 'none',
-          random: true,
-          straight: false,
-          out_mode: 'out',
-          bounce: false,
-          attract: {
-            enable: true,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: {
-          onhover: {
-            enable: true,
-            mode: 'grab'
-          },
-          onclick: {
-            enable: true,
-            mode: 'push'
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 200,
-            line_linked: {
-              opacity: 0.3
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
-        }
-      },
-      retina_detect: true
-    });
-  }
+  if (typeof particlesJS === 'undefined') return;
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 110, density: { enable: true, value_area: 900 } },
+      color: { value: ['#00e5ff', '#7c5cff', '#4d8bff'] },
+      shape: { type: 'circle' },
+      opacity: { value: 0.7, random: true, anim: { enable: true, speed: 0.8, opacity_min: 0.2, sync: false } },
+      size: { value: 2.6, random: true, anim: { enable: true, speed: 2, size_min: 0.6, sync: false } },
+      line_linked: { enable: true, distance: 160, color: '#00e5ff', opacity: 0.35, width: 1 },
+      move: { enable: true, speed: 1.4, direction: 'none', random: true, straight: false, out_mode: 'out', bounce: false }
+    },
+    interactivity: {
+      detect_on: 'window',
+      events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+      modes: {
+        grab: { distance: 220, line_linked: { opacity: 0.8 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
 }
-
 // ===== INITIALIZE ALL EFFECTS =====
 function initMouseEffects() {
-  // Only initialize on non-mobile devices
-  if (window.innerWidth > 768) {
-    initCustomCursor();
-    initSparkleEffect();
-  }
   initParticles();
 }
 
@@ -763,4 +707,4 @@ document.querySelectorAll('.cert-modal-content, .project-modal-content').forEach
   content.addEventListener('click', (e) => {
     e.stopPropagation();
   });
-});
+}); 
