@@ -1,0 +1,66 @@
+/* ===== APPEND THIS TO THE BOTTOM OF style.css (before the @media blocks is fine too) ===== */
+
+#expertise { background: linear-gradient(180deg, rgba(10, 17, 36, 0.8), rgba(10, 17, 36, 0.5)); }
+
+.expertise-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.expertise-card {
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  padding: 30px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.expertise-card::after {
+  content: ''; position: absolute; top: 0; left: 0; width: 22px; height: 22px;
+  border-top: 2px solid var(--primary); border-left: 2px solid var(--primary); pointer-events: none;
+}
+.expertise-card::before {
+  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.14), transparent);
+  transition: left 0.7s ease;
+}
+.expertise-card:hover::before { left: 100%; }
+.expertise-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow); }
+
+.expertise-icon {
+  width: 54px; height: 54px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; color: var(--primary); background: rgba(0, 229, 255, 0.08);
+  border: 1px solid var(--primary); box-shadow: inset 0 0 14px rgba(0, 229, 255, 0.2);
+  transition: var(--transition);
+}
+.expertise-card:hover .expertise-icon { box-shadow: var(--glow); transform: scale(1.08); }
+
+.expertise-card h3 { font-size: 1.15rem; line-height: 1.35; }
+.expertise-card p { color: var(--text-muted); font-size: 0.92rem; }
+.expertise-platforms { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+
+.expertise-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+  padding-top: 34px;
+  border-top: 1px dashed var(--border);
+}
+.expertise-skill {
+  display: flex; align-items: center; gap: 14px; padding: 18px 20px;
+  background: rgba(0, 229, 255, 0.05); border: 1px solid var(--border);
+  border-left: 3px solid var(--primary); transition: var(--transition);
+}
+.expertise-skill i { color: var(--primary); font-size: 1.2rem; width: 24px; text-align: center; }
+.expertise-skill span { font-family: var(--mono); font-size: 0.85rem; font-weight: 600; }
+.expertise-skill:hover { transform: translateX(6px); border-color: var(--primary); box-shadow: var(--glow); }
+
+@media (max-width: 768px) {
+  .expertise-container { grid-template-columns: 1fr; }
+}

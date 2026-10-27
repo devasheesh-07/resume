@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business & Sales Expertise | Devasheesh Vardiya</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="expertise.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header id="header" class="scrolled">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html#hero" class="logo">Deva<span>sheesh</span></a>
+        <div class="nav-actions">
+          <a href="index.html#skills" class="btn btn-outline">Skills</a>
+          <a href="index.html#projects" class="btn btn-outline">Projects</a>
+          <a href="index.html#contact" class="btn">Hire Me</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section id="expertise" class="section" style="padding-top:140px; min-height:100vh;">
+    <div class="container">
+      <h2 class="section-title">Business & Sales Expertise</h2>
+
+      <div class="expertise-container">
+        <div class="expertise-card">
+          <div class="expertise-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>IT Business Development Executive</h3>
+          <p>Identifying new business opportunities, building client relationships and growing IT service partnerships.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>IT Sales Executive</h3>
+          <p>Selling software and IT services, managing the sales cycle from first contact to closing the deal.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon"><i class="fas fa-laptop-code"></i></div>
+          <h3>Software Solution Consulting</h3>
+          <p>Understanding client needs and recommending the right software solutions for their business problems.</p>
+        </div>
+        <div class="expertise-card">
+          <div class="expertise-icon"><i class="fas fa-globe"></i></div>
+          <h3>Online Platform Bidding</h3>
+          <p>Winning projects on freelance and lead platforms such as Upwork, Freelancer and Apollo.io.</p>
+          <div class="expertise-platforms">
+            <span class="project-tag">Upwork</span>
+            <span class="project-tag">Freelancer</span>
+            <span class="project-tag">Apollo.io</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="expertise-skills">
+        <div class="expertise-skill"><i class="fas fa-comments"></i><span>Client Communication</span></div>
+        <div class="expertise-skill"><i class="fas fa-handshake"></i><span>Negotiation</span></div>
+        <div class="expertise-skill"><i class="fas fa-bullseye"></i><span>Lead Generation</span></div>
+        <div class="expertise-skill"><i class="fas fa-lightbulb"></i><span>Business Solution Finding</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <p><a href="index.html">&larr; Back to Portfolio</a> | <span>Devasheesh Vardiya</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 110, density: { enable: true, value_area: 900 } },
+        color: { value: ['#00e5ff', '#7c5cff', '#4d8bff'] },
+        shape: { type: 'circle' },
+        opacity: { value: 0.7, random: true },
+        size: { value: 2.6, random: true },
+        line_linked: { enable: true, distance: 160, color: '#00e5ff', opacity: 0.35, width: 1 },
+        move: { enable: true, speed: 1.4, random: true, out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'window',
+        events: { onhover: { enable: true, mode: 'grab' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { grab: { distance: 220, line_linked: { opacity: 0.8 } }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>
